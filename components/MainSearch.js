@@ -11,11 +11,15 @@ import { Button } from 'react-native-elements';
 import Header from './Header';
 import SearchResults from './SearchResults';
 
+import { getWeather } from '../actions';
+
+
 export class MainSearch extends React.Component {
   makeSearch() {
     Alert.alert('you clicked it')
+    this.props.dispatch(getWeather());
   }
-  
+
   render() {
     return (
       <View style={styles.container}>

@@ -17,23 +17,21 @@ export const getWeatherError = message => ({
     message
 });
 
-export const getQuestions = accessToken => dispatch => {
-    dispatch(getQuestionsRequest());
-    fetch('/api/questions', {
-        headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
-    })
+export const getWeather = accessToken => dispatch => {
+    console.log('you dispatched getWeather');
+    dispatch(getWeatherRequest());
+    fetch('http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/WA/Seattle.json', {})
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.statusText);
             }
+            console.log(res.json());
             return res.json();
         })
         .then(questions => {
-            dispatch(getQuestionsSuccess(questions));
+            dispatch(getWeatherSuccess(weather));
         })
         .catch(err => {
-            dispatch(getQuestionsError(err));
+            dispatch(getWeatherError(err));
         });
 };
