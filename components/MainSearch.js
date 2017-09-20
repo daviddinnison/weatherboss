@@ -1,19 +1,26 @@
+//react
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
-
 import { connect } from 'react-redux';
 
-import Header from './Header';
+//react native
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
+import { Button } from 'react-native-elements';
 
+//components
+import Header from './Header';
+import SearchResults from './SearchResults';
 
 export class MainSearch extends React.Component {
   
   render() {
     return (
       <View style={styles.container}>
-        <Header/>
-        <Text>some text</Text>
+        {/* <Header/> */}
+        <Text>text</Text>
         <Text>{this.props.currentUser}</Text>
+        <Button
+          title='BUTTON' />
       </View>
     );
   }
@@ -31,7 +38,8 @@ const styles = StyleSheet.create({
 // AppRegistry.registerComponent('MainSearch', () => MainSearch)
 const mapStateToProps = function(state){
     return {
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
+        navigationState: state.tabBar
     }
 };
 
