@@ -5,7 +5,7 @@ import {
 } from '../actions';
 
 const initialState = {
-    currentUser: 'David'
+    currentUser: 'David Dinnison'
 };
 
 export const mainReducer = (state = initialState, action) => {

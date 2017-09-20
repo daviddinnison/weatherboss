@@ -16,3 +16,24 @@ export const getWeatherError = message => ({
     type: GET_WEATHER_ERROR,
     message
 });
+
+export const getQuestions = accessToken => dispatch => {
+    dispatch(getQuestionsRequest());
+    fetch('/api/questions', {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            }
+            return res.json();
+        })
+        .then(questions => {
+            dispatch(getQuestionsSuccess(questions));
+        })
+        .catch(err => {
+            dispatch(getQuestionsError(err));
+        });
+};

@@ -3,13 +3,16 @@ import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import { connect } from 'react-redux';
 
+import Header from './Header';
 
-export class SearchBar extends React.Component {
+
+export class MainSearch extends React.Component {
   
   render() {
     return (
       <View style={styles.container}>
-        <Text>some other text</Text>
+        <Header/>
+        <Text>some text</Text>
         <Text>{this.props.currentUser}</Text>
       </View>
     );
@@ -19,17 +22,17 @@ export class SearchBar extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
 
-// AppRegistry.registerComponent('SearchBar', () => SearchBar)
+// AppRegistry.registerComponent('MainSearch', () => MainSearch)
 const mapStateToProps = function(state){
     return {
         currentUser: state.currentUser
     }
 };
 
-export default connect(mapStateToProps)(SearchBar);
+export default connect(mapStateToProps)(MainSearch);
