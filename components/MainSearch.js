@@ -16,6 +16,7 @@ import { getWeather } from '../actions';
 
 export class MainSearch extends React.Component {
   makeSearch() {
+    Alert.alert('you clicked this');
     this.props.dispatch(getWeather());
   }
 
@@ -26,7 +27,7 @@ export class MainSearch extends React.Component {
         <Text>text</Text>
         <Text>{this.props.currentUser}</Text>
         <Button
-          onPress={this.makeSearch()}
+          onPress={() => {this.makeSearch()}}
           title='search' />
       </View>
     );

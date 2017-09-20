@@ -1,4 +1,5 @@
 //make get requests//make get requests
+import { Actions } from 'react-native-router-flux';
 
 export const GET_WEATHER_REQUEST = 'GET_WEATHER_REQUEST';
 export const getWeatherRequest = () => ({
@@ -25,11 +26,11 @@ export const getWeather = accessToken => dispatch => {
             if (!res.ok) {
                 throw new Error(res.statusText);
             }
-            
             return res.json();
         })
         .then(questions => {
             console.log(questions);
+            Actions.results();
             dispatch(getWeatherSuccess(weather));
         })
         .catch(err => {
