@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { Alert, AppRegistry, StyleSheet, Text, View } from 'react-native';
 import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
 import { Button } from 'react-native-elements';
 
@@ -12,6 +12,9 @@ import Header from './Header';
 import SearchResults from './SearchResults';
 
 export class MainSearch extends React.Component {
+  makeSearch() {
+    Alert.alert('you clicked it')
+  }
   
   render() {
     return (
@@ -20,7 +23,8 @@ export class MainSearch extends React.Component {
         <Text>text</Text>
         <Text>{this.props.currentUser}</Text>
         <Button
-          title='BUTTON' />
+          onPress={this.makeSearch()}
+          title='search' />
       </View>
     );
   }

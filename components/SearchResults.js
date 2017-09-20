@@ -4,21 +4,6 @@
 //get returns simpleforecast/forecastday/
 
 
-//render
-//for each day wrap in View:
-    //date
-    //high
-    //low
-    //conditions
-    //icon url built in
-
-
-
-
-//map state to props: the search that was made on app
-
-//export default
-
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
@@ -28,7 +13,15 @@ import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-r
 
 
 export class SearchResults extends React.Component {
-  
+  //render
+  //for each day wrap in View:
+    //date
+    //high
+    //low
+    //conditions
+    //icon url built in
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -48,7 +41,8 @@ const styles = StyleSheet.create({
   },
 });
 
-// AppRegistry.registerComponent('SearchResults', () => SearchResults)
+
+//map state to props: the search that was made on app
 const mapStateToProps = function(state){
     return {
         currentUser: state.currentUser
