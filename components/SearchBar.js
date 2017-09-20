@@ -1,13 +1,16 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
+import { connect } from 'react-redux';
 
-export default class SearchBar extends React.Component {
+
+export class SearchBar extends React.Component {
   
   render() {
     return (
       <View style={styles.container}>
-        <Text>some text</Text>
+        <Text>some other text</Text>
+        <Text>{this.props.currentUser}</Text>
       </View>
     );
   }
@@ -22,4 +25,11 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('SearchBar', () => SearchBar)
+// AppRegistry.registerComponent('SearchBar', () => SearchBar)
+const mapStateToProps = function(state){
+    return {
+        currentUser: state.currentUser
+    }
+};
+
+export default connect(mapStateToProps)(SearchBar);
