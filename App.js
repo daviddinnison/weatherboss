@@ -1,22 +1,22 @@
 import React from 'react';
+
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
+
+import {Provider} from 'react-redux';
+import store from './store';
+
+import SearchBar from './components/SearchBar'
 
 export default class App extends React.Component {
-  render() {
+  render () {  
     return (
-      <View style={styles.container}>
-        <Text>WeatherBossssss</Text>
-
-          <Button
-          raised
-          
-          title={`button test`}
-        />
-      </View>
-    );
+          <Provider store={store}>
+            <SearchBar/>
+          </Provider>
+      );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -26,3 +26,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
