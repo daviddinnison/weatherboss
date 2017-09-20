@@ -25,10 +25,11 @@ export const getWeather = accessToken => dispatch => {
             if (!res.ok) {
                 throw new Error(res.statusText);
             }
-            console.log(res.json());
+            
             return res.json();
         })
         .then(questions => {
+            console.log(questions);
             dispatch(getWeatherSuccess(weather));
         })
         .catch(err => {

@@ -16,7 +16,6 @@ import { getWeather } from '../actions';
 
 export class MainSearch extends React.Component {
   makeSearch() {
-    Alert.alert('you clicked it')
     this.props.dispatch(getWeather());
   }
 
