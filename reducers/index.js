@@ -13,10 +13,10 @@ export const mainReducer = (state = initialState, action) => {
     if (action.type === GET_WEATHER_REQUEST) {
         return Object.assign({}, state, { loading: true });
     } else if (action.type === GET_WEATHER_SUCCESS) {
-        console.log('GET WEATHER SUCCESS ACTION TRIGGERED IN REDUCER', action)//this works
+        // console.log('GET WEATHER SUCCESS ACTION TRIGGERED IN REDUCER', action)
         return Object.assign({}, state, {
             forecastData: action.forecastData,
-            loading: false // does this need to be here? update all depending on joe's response
+            loading: false
         });
     } else if (action.type === GET_WEATHER_ERROR) {
         return Object.assign({}, state, {

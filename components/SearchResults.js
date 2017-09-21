@@ -1,23 +1,12 @@
-//will route from App
-//search will go to server endpoint, save to state, be passed to props here
-//component did mount: make get request
-//get returns simpleforecast/forecastday/
-
-
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
-
 import { connect } from 'react-redux';
 
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 
-
 export class SearchResults extends React.Component {
-  
-  
-  
   //render
-  //for each day wrap in View:
+  //.map for every forecast day wrap in View:
   //date
   //high
   //low
@@ -26,13 +15,11 @@ export class SearchResults extends React.Component {
   
   render() {
     // console.log(this.props, 'PROPS FROM SEARCH RESULTS IN COMPONENT')
-    console.log(this.props.forecastData, 'props experiment')
+    console.log(this.props.forecastData.simpleforecast, 'props experiment')
     return (
       <View style={styles.container}>
         {/* <Header/> */}
-        <Text>this is the search results sadfcomponent. i wrote some text here</Text>
-
-        {/* <Text>{this.props.forecastData.forecast.txt_forecase.date}</Text> */}
+        <Text>this is the search results component. i wrote some text here</Text>
       </View>
     );
   }
@@ -50,7 +37,7 @@ const styles = StyleSheet.create({
 //map state to props: the search that was made on app
 const mapStateToProps = function(state){
     return {
-        forecastData: state.forecastData,
+        forecastData: state.forecastData.forecast,
         currentUser: state.currentUser
     }
 };

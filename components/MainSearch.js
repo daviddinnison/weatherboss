@@ -15,12 +15,16 @@ import { getWeather } from '../actions';
 
 
 export class MainSearch extends React.Component {
+  //state constructor
+  state = {
+    userInputState: '',
+    userInputCity: ''
+  }
+  
+  
   makeSearch() {
-    //grab usa state and usa city values
 
-    const userInputState = 'VA';
-    const userInputCity= 'Springfield'
-    this.props.dispatch(getWeather(userInputState, userInputCity));
+    this.props.dispatch(getWeather(this.state.userInputState, this.state.userInputCity));
   }
 
   render() {
@@ -29,10 +33,11 @@ export class MainSearch extends React.Component {
         {/* <Header/> */}
         {/* <Text>{this.props.currentUser}</Text> */}
         <Text>USA City</Text>
-        <TextInput style={styles.input} textAlign="center" onSubmitEditing={this.makeSearch} value ="city"/>
+        {/* sets state */}
+        <TextInput style={styles.input} textAlign="center" onChangeText={(city) => this.setState({userInputCity: city})}/>
 
         <Text>USA State</Text>
-        <TextInput style={styles.input} textAlign="center" onSubmitEditing={this.makeSearch} value ="state"/>
+        <TextInput style={styles.input} textAlign="center" onChangeText={(usState) => this.setState({userInputState: usState})} />
 
         <Button onPress={() => {this.makeSearch()}} title='search' />
       </View>
