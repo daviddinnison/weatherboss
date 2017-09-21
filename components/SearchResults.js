@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 //map state to props: the search that was made on app
 const mapStateToProps = function(state){
     return {

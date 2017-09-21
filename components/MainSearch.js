@@ -3,9 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { Alert, AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { Alert, AppRegistry, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
-import { Button } from 'react-native-elements';
+import { Button, SearchBar } from 'react-native-elements';
 
 //components
 import Header from './Header';
@@ -26,6 +26,17 @@ export class MainSearch extends React.Component {
         {/* <Header/> */}
         <Text>text</Text>
         <Text>{this.props.currentUser}</Text>
+        {/* <TextInput
+        style={styles.input}
+        textAlign="center"
+        onSubmitEditing={this.makeSearch} />
+      <TouchableHighlight onPress={this.makeSearch}>
+        <Text>Press this button to submit editing</Text>
+      </TouchableHighlight> */}
+        <SearchBar
+          lightTheme
+          style={styles.searchbar}
+          placeholder='Type Here...' />
         <Button
           onPress={() => {this.makeSearch()}}
           title='search' />
@@ -39,8 +50,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f2f2f2',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
+  input: {
+    backgroundColor: 'black',
+    color: 'white',
+  }
+  // searchbar: {
+  //   width: 100%,
+  // },
 });
 
 // AppRegistry.registerComponent('MainSearch', () => MainSearch)
