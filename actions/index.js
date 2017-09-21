@@ -7,9 +7,9 @@ export const getWeatherRequest = () => ({
 });
 
 export const GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
-export const getWeatherSuccess = weather => ({
+export const getWeatherSuccess = forecastData => ({
     type: GET_WEATHER_SUCCESS,
-    weather
+    forecastData
 });
 
 export const GET_WEATHER_ERROR = 'GET_WEATHER_ERROR';
@@ -18,9 +18,7 @@ export const getWeatherError = message => ({
     message
 });
 
-export const getWeather = accessToken => dispatch => {
-    const userInputState = 'VA';
-    const userInputCity = 'Springfield';
+export const getWeather = (userInputState, userInputCity) => dispatch => {
 
     dispatch(getWeatherRequest());
 
@@ -31,10 +29,10 @@ export const getWeather = accessToken => dispatch => {
             }
             return res.json();
         })
-        .then(weather => {
-            // console.log(weather);
+        .then(forecastData => {
+            console.log(forecastData, 'DATA RETURNED FROM FETCH PRIOR TO GETWEATHERSUCCESS');
             Actions.results();
-            dispatch(getWeatherSuccess(weather));
+            dispatch(getWeatherSuccess(forecastData));
         })
         .catch(err => {
             dispatch(getWeatherError(err));

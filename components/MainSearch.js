@@ -18,9 +18,9 @@ export class MainSearch extends React.Component {
   makeSearch() {
     //grab usa state and usa city values
 
-    
-    // Alert.alert('you clicked this');
-    this.props.dispatch(getWeather());
+    const userInputState = 'VA';
+    const userInputCity= 'Springfield'
+    this.props.dispatch(getWeather(userInputState, userInputCity));
   }
 
   render() {
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = function(state){
     return {
         currentUser: state.currentUser,
+        forecastData: state.forecastData,
         navigationState: state.tabBar
     }
 };

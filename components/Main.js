@@ -8,12 +8,12 @@ import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from '
 export default class Main extends React.Component {
   render () {  
     return (
-            <Router>
-              <Stack key="root">
+        <Router>
+            <Stack key="root">
                 <Scene key="search" component={MainSearch} title="Search"/>
                 <Scene key="results" component={SearchResults} title="Results"/>
-              </Stack>
-            </Router>
+            </Stack>
+        </Router>
       );
   }
 }
