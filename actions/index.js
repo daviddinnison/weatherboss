@@ -19,13 +19,12 @@ export const getWeatherError = message => ({
 });
 
 export const getWeather = accessToken => dispatch => {
-    console.log('you dispatched getWeather');
-    const usaState = 'VA';
-    const city = 'Springfield';
-    // const test = 'http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/{usaState}/{city}.json'
+    const userInputState = 'VA';
+    const userInputCity = 'Springfield';
+
     dispatch(getWeatherRequest());
-  //http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/VA/Springfield.json
-    fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${usaState}/${city}.json`, {})
+
+    fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${userInputState}/${userInputCity}.json`, {})
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.statusText);
@@ -33,7 +32,7 @@ export const getWeather = accessToken => dispatch => {
             return res.json();
         })
         .then(weather => {
-            console.log(weather);
+            // console.log(weather);
             Actions.results();
             dispatch(getWeatherSuccess(weather));
         })

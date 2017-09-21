@@ -16,7 +16,10 @@ import { getWeather } from '../actions';
 
 export class MainSearch extends React.Component {
   makeSearch() {
-    Alert.alert('you clicked this');
+    //grab usa state and usa city values
+
+    
+    // Alert.alert('you clicked this');
     this.props.dispatch(getWeather());
   }
 
@@ -24,22 +27,14 @@ export class MainSearch extends React.Component {
     return (
       <View style={styles.container}>
         {/* <Header/> */}
-        <Text>text</Text>
-        <Text>{this.props.currentUser}</Text>
-        {/* <TextInput
-        style={styles.input}
-        textAlign="center"
-        onSubmitEditing={this.makeSearch} />
-      <TouchableHighlight onPress={this.makeSearch}>
-        <Text>Press this button to submit editing</Text>
-      </TouchableHighlight> */}
-        <SearchBar
-          lightTheme
-          style={styles.searchbar}
-          placeholder='Type Here...' />
-        <Button
-          onPress={() => {this.makeSearch()}}
-          title='search' />
+        {/* <Text>{this.props.currentUser}</Text> */}
+        <Text>USA City</Text>
+        <TextInput style={styles.input} textAlign="center" onSubmitEditing={this.makeSearch} value ="city"/>
+
+        <Text>USA State</Text>
+        <TextInput style={styles.input} textAlign="center" onSubmitEditing={this.makeSearch} value ="state"/>
+
+        <Button onPress={() => {this.makeSearch()}} title='search' />
       </View>
     );
   }
@@ -47,9 +42,9 @@ export class MainSearch extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f2f2f2',
-    alignItems: 'center',
+    // flex: 1,
+    // backgroundColor: '#f2f2f2',
+    // alignItems: 'center',
     // justifyContent: 'center',
   },
   input: {

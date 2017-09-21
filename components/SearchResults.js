@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 
 
+console.log(this.props, 'PROPS FROM SEARCH RESULTS')
 export class SearchResults extends React.Component {
   //render
   //for each day wrap in View:
@@ -20,7 +21,6 @@ export class SearchResults extends React.Component {
     //low
     //conditions
     //icon url built in
-
 
   render() {
     return (
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 //map state to props: the search that was made on app
 const mapStateToProps = function(state){
     return {
-        currentUser: state.currentUser
+        forecastData: state.forecastData
     }
 };
 
