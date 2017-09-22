@@ -18,9 +18,7 @@ export const getWeatherError = message => ({
 });
 
 export const getWeather = (state, city) => dispatch => {
-    
     dispatch(getWeatherRequest());
-
     fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${state}/${city}.json`, {})
         .then(res => {
             if (!res.ok) {
@@ -29,7 +27,6 @@ export const getWeather = (state, city) => dispatch => {
             return res.json();
         })
         .then(forecastData => {
-            // console.log(forecastData, 'DATA RETURNED FROM FETCH PRIOR TO GETWEATHERSUCCESS');
             dispatch(getWeatherSuccess(forecastData));
             Actions.results();
         })

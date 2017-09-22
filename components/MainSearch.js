@@ -15,7 +15,6 @@ import { getWeather } from '../actions';
 
 
 export class MainSearch extends React.Component {
-
   state = {
     userInputState: '',
     userInputCity: ''
@@ -83,14 +82,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '95%',
   },
-
 });
 
 const mapStateToProps = function(state){
     return {
-        currentUser: state.currentUser,
-        forecastData: state.forecastData,
-        navigationState: state.tabBar
+      currentUser: state.currentUser,
+      forecastData: state.forecastData,
+      navigationState: state.tabBar
     }
 };
 

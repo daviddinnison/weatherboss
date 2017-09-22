@@ -1,11 +1,12 @@
+//react
 import React from 'react';
 import { connect } from 'react-redux';
 
+//react native
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 
 export class SearchResults extends React.Component {
-
   static navigationOptions = {
     header: null
   };
@@ -35,10 +36,11 @@ export class SearchResults extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f2f2f2',
     alignItems: 'center',
+    backgroundColor: '#f2f2f2',
+    flex: 1,
     justifyContent: 'center',
+    marginTop: 50,
   },
   dailyresult: {
     alignItems: 'center',
@@ -62,7 +64,6 @@ const styles = StyleSheet.create({
   },
 });
 
-//map state to props: the search that was made on app
 const mapStateToProps = function(state){
     return {
         forecastData: state.forecastData.forecast,
