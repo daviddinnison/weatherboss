@@ -16,11 +16,11 @@ export class SearchResults extends React.Component {
   render() {
     const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
     <View key={item.period} style={styles.dailyresult}>
+      <Text style={styles.date}>{item.date.pretty}</Text>
       <Image style= {{ height:50, width: 50 }} source={{uri: `${item.icon_url}`}}/>
-      <Text>{item.date.pretty}</Text>
-      <Text>High: {item.high.fahrenheit}</Text>
-      <Text>Low: {item.low.fahrenheit}</Text>
-      <Text>{item.conditions}</Text>
+      <Text style={styles.conditions}>{item.conditions}</Text>
+      <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
+      <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
     </View>
   );
     // console.log(this.props, 'PROPS FROM SEARCH RESULTS IN COMPONENT')
@@ -42,10 +42,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dailyresult: {
-    borderColor: '#527FE4', 
-    borderWidth: 5,
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderColor: 'gray', 
+    borderWidth: 3,
     marginBottom: 15,
     padding: 10,
+  },
+  date: {
+    fontWeight: 'bold',
+  },
+  conditions: {
+    fontStyle: 'italic',
+  },
+  high: {
+    color: '#C5345F',
+  },
+  low: {
+    color: '#1643A8',
   },
 });
 

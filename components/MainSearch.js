@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 
 //react native
 import { Alert, AppRegistry, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
-import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
 import { Button, SearchBar } from 'react-native-elements';
+import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
 
 //components
-import Header from './Header';
 import SearchResults from './SearchResults';
 
 import { getWeather } from '../actions';
@@ -34,21 +33,22 @@ export class MainSearch extends React.Component {
         {/* <Header/> */}
         <View style={styles.heading}>
           <Text style={styles.weatherbossheading}>WeatherBoss</Text>
-          <Text style={styles.weatherbosssubheading}>Be the boss of your own weather...no work required</Text>
+          <Text style={styles.weatherbosssubheading}>Be your own weatherboss</Text>
         </View>
+        <View style={styles.inputcontainer}>
+          <TextInput style={styles.input} 
+          textAlign="center"
+          underlineColorAndroid='rgba(0,0,0,0)'
+          onChangeText={(city) => this.setState({userInputCity: city})} 
+          placeholder="city"/>
 
-        <TextInput style={styles.input} 
-        textAlign="center"
-        underlineColorAndroid='rgba(0,0,0,0)'
-        onChangeText={(city) => this.setState({userInputCity: city})} 
-        placeholder="city"/>
-
-        <TextInput style={styles.input} 
-        textAlign="center" 
-        underlineColorAndroid='rgba(0,0,0,0)'
-        onChangeText={(usState) => this.setState({userInputState: usState})}  
-        placeholder="state"/>
-
+          <TextInput style={styles.input} 
+          textAlign="center" 
+          underlineColorAndroid='rgba(0,0,0,0)'
+          maxLength = {2}
+          onChangeText={(usState) => this.setState({userInputState: usState})}  
+          placeholder="state abbrev"/>
+        </View>
         <Button backgroundColor='#12CC94' onPress={() => {this.makeSearch()}} title='search' />
       </View>
     );
@@ -60,14 +60,12 @@ const styles = StyleSheet.create({
     // flex: 1,
     // backgroundColor: '#f2f2f2',
     // alignItems: 'center',
-    // justifyContent: 'center',
   },
   heading: {
-    // alignItems: 'center',
+    alignItems: 'center',
     backgroundColor: '#6088BB',
-    justifyContent: 'center',
     marginBottom: 15,
-    padding: 60,
+    padding: 50,
   },
   weatherbossheading: {
     color: 'white',
@@ -77,11 +75,17 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 10,
   },
+  inputcontainer: {
+    alignItems: 'center',
+  },
   input: {
     backgroundColor: 'white',
     borderColor: 'gray', 
     borderWidth: 1,
+    color: 'gray',
+    height: 30,
     marginBottom: 10,
+    width: '95%',
   },
 
 });
