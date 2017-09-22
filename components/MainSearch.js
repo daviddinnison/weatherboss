@@ -88,6 +88,8 @@ const mapStateToProps = function(state){
     return {
       currentUser: state.currentUser,
       forecastData: state.forecastData,
+      forecastCity: state.forecastCity,
+      forecastState: state.forecastState,
       navigationState: state.tabBar
     }
 };

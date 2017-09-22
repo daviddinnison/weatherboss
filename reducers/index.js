@@ -6,15 +6,20 @@ import {
 
 const initialState = {
     currentUser: 'David Dinnison',
-    forecastData: {}
+    forecastData: {},
+    forecastCity: '',
+    forecastState: ''
 };
 
 export const mainReducer = (state = initialState, action) => {
     if (action.type === GET_WEATHER_REQUEST) {
         return Object.assign({}, state, { loading: true });
     } else if (action.type === GET_WEATHER_SUCCESS) {
+        console.log(action, 'ACTION')
         return Object.assign({}, state, {
             forecastData: action.forecastData,
+            forecastCity: action.userCity,
+            forecastState: action.userState,
             loading: false
         });
     } else if (action.type === GET_WEATHER_ERROR) {
@@ -23,5 +28,6 @@ export const mainReducer = (state = initialState, action) => {
             error: action.message
         });
     } 
+    console.log(state, 'STATE')
     return state;
 };
