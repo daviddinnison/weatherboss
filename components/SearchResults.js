@@ -40,12 +40,12 @@ export class SearchResults extends React.Component {
       <Text style={styles.conditions}>{item.conditions}</Text>
       <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
       <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
-      <Button styles={styles.more} title='more' onPress={() => this.expandResult()}/>
+      <Button color='#76CCBE' title='more' onPress={() => this.expandResult()}/>
       <Collapsible collapsed={this.state.collapsed} align="center">
-        <View>
-          <Text>Precipitation:{item.qpf_allday.mm}mm</Text>
-          <Text>Avg humidity:{item.avehumidity}%</Text>
-          <Text>Avg wind:{item.avewind.mph} mph</Text>
+        <View style={styles.detailcontainer}>
+          <Text style={styles.detail}>Precipitation:{item.qpf_allday.mm} mm</Text>
+          <Text style={styles.detail}>Avg humidity:{item.avehumidity} %</Text>
+          <Text style={styles.detail}>Avg wind:{item.avewind.mph} mph</Text>
         </View>
       </Collapsible>
     </View>
@@ -90,9 +90,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10,
   },
-  more: {
-    backgroundColor: '#9EF4E6',
-  },
   date: {
     fontWeight: 'bold',
   },
@@ -100,11 +97,20 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   high: {
-    color: '#C5345F',
+    color: '#CC7685',
   },
   low: {
     color: '#1643A8',
     marginBottom: 10,
+  },
+  detailcontainer: {
+    marginTop: 10,
+
+  },
+  detail: {
+    color: 'gray',
+    fontStyle: 'italic',
+    marginTop: 1,
   },
 });
 
