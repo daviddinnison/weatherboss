@@ -82,6 +82,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '95%',
   },
+  searchbutton: {
+    backgroundColor:'#12CC94',
+  }
 });
 
 const mapStateToProps = function(state){

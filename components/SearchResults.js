@@ -14,8 +14,8 @@ export class SearchResults extends React.Component {
   }
   
 
-  expandResult(item) {
-    Alert.alert(item);
+  expandResult() {
+    this.setState({ collapsed: !this.state.collapsed });
   }
 
   _toggleExpanded = () => {
@@ -40,10 +40,12 @@ export class SearchResults extends React.Component {
       <Text style={styles.conditions}>{item.conditions}</Text>
       <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
       <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
-      {/* <Button backgroundColor='#12CC94' title='more' onPress={this.expandResult(item.period)}/> */}
+      <Button styles={styles.more} title='more' onPress={() => this.expandResult()}/>
       <Collapsible collapsed={this.state.collapsed} align="center">
         <View>
-          <Text>{item.period}</Text>
+          <Text>Precipitation:{item.qpf_allday.mm}mm</Text>
+          <Text>Avg humidity:{item.avehumidity}%</Text>
+          <Text>Avg wind:{item.avewind.mph} mph</Text>
         </View>
       </Collapsible>
     </View>
@@ -88,6 +90,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10,
   },
+  more: {
+    backgroundColor: '#9EF4E6',
+  },
   date: {
     fontWeight: 'bold',
   },
@@ -99,6 +104,7 @@ const styles = StyleSheet.create({
   },
   low: {
     color: '#1643A8',
+    marginBottom: 10,
   },
 });
 
