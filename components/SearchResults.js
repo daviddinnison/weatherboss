@@ -15,7 +15,7 @@ export class SearchResults extends React.Component {
   
   render() {
     const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
-    <View key={item.period}>
+    <View key={item.period} style={styles.dailyresult}>
       <Image style= {{ height:50, width: 50 }} source={{uri: `${item.icon_url}`}}/>
       <Text>{item.date.pretty}</Text>
       <Text>High: {item.high.fahrenheit}</Text>
@@ -29,7 +29,6 @@ export class SearchResults extends React.Component {
       <View style={styles.container}>
         {/* <Header/> */}
         {dailyForecast}
-        <Text>this is the search results component. i wrote some text here</Text>
       </View>
     );
   }
@@ -41,6 +40,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  dailyresult: {
+    borderColor: '#527FE4', 
+    borderWidth: 5,
+    marginBottom: 15,
+    padding: 10,
   },
 });
 

@@ -10,8 +10,8 @@ export default class Main extends React.Component {
     return (
         <Router>
             <Stack key="root">
-                <Scene key="search" component={MainSearch} title="Search"/>
-                <Scene key="results" component={SearchResults} title="Results"/>
+                <Scene key="search" component={MainSearch}/>
+                <Scene key="results" component={SearchResults}/>
             </Stack>
         </Router>
       );

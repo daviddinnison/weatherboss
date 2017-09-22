@@ -32,15 +32,24 @@ export class MainSearch extends React.Component {
     return (
       <View style={styles.container}>
         {/* <Header/> */}
-        {/* <Text>{this.props.currentUser}</Text> */}
-        <Text>USA City</Text>
-        {/* sets state */}
-        <TextInput style={styles.input} textAlign="center" onChangeText={(city) => this.setState({userInputCity: city})}/>
+        <View style={styles.heading}>
+          <Text style={styles.weatherbossheading}>WeatherBoss</Text>
+          <Text style={styles.weatherbosssubheading}>Be the boss of your own weather...no work required</Text>
+        </View>
 
-        <Text>USA State</Text>
-        <TextInput style={styles.input} textAlign="center" onChangeText={(usState) => this.setState({userInputState: usState})} />
+        <TextInput style={styles.input} 
+        textAlign="center"
+        underlineColorAndroid='rgba(0,0,0,0)'
+        onChangeText={(city) => this.setState({userInputCity: city})} 
+        placeholder="city"/>
 
-        <Button onPress={() => {this.makeSearch()}} title='search' />
+        <TextInput style={styles.input} 
+        textAlign="center" 
+        underlineColorAndroid='rgba(0,0,0,0)'
+        onChangeText={(usState) => this.setState({userInputState: usState})}  
+        placeholder="state"/>
+
+        <Button backgroundColor='#12CC94' onPress={() => {this.makeSearch()}} title='search' />
       </View>
     );
   }
@@ -53,13 +62,28 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
   },
-  input: {
-    backgroundColor: 'black',
+  heading: {
+    // alignItems: 'center',
+    backgroundColor: '#6088BB',
+    justifyContent: 'center',
+    marginBottom: 15,
+    padding: 60,
+  },
+  weatherbossheading: {
     color: 'white',
-  }
-  // searchbar: {
-  //   width: 100%,
-  // },
+    fontSize: 30,
+  },
+  weatherbosssubheading: {
+    color: 'white',
+    fontSize: 10,
+  },
+  input: {
+    backgroundColor: 'white',
+    borderColor: 'gray', 
+    borderWidth: 1,
+    marginBottom: 10,
+  },
+
 });
 
 // AppRegistry.registerComponent('MainSearch', () => MainSearch)
