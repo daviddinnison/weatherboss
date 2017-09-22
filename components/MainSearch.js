@@ -10,19 +10,18 @@ import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from '
 //components
 import SearchResults from './SearchResults';
 
+//actions
 import { getWeather } from '../actions';
 
 
 export class MainSearch extends React.Component {
-  //state constructor
+
   state = {
     userInputState: '',
     userInputCity: ''
   }
   
-  
   makeSearch() {
-
     Keyboard.dismiss();
     this.props.dispatch(getWeather(this.state.userInputState, this.state.userInputCity));
   }
@@ -30,7 +29,6 @@ export class MainSearch extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Header/> */}
         <View style={styles.heading}>
           <Text style={styles.weatherbossheading}>WeatherBoss</Text>
           <Text style={styles.weatherbosssubheading}>Be your own weatherboss</Text>
@@ -57,9 +55,7 @@ export class MainSearch extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: '#f2f2f2',
-    // alignItems: 'center',
+
   },
   heading: {
     alignItems: 'center',
@@ -90,7 +86,6 @@ const styles = StyleSheet.create({
 
 });
 
-// AppRegistry.registerComponent('MainSearch', () => MainSearch)
 const mapStateToProps = function(state){
     return {
         currentUser: state.currentUser,

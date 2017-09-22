@@ -1,17 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { AppRegistry, Image, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 
 export class SearchResults extends React.Component {
-  //render
-  //.map for every forecast day wrap in View:
-  //date
-  //high
-  //low
-  //conditions
-  //icon url built in
+
+  static navigationOptions = {
+    header: null
+  };
   
   render() {
     const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
@@ -21,15 +18,17 @@ export class SearchResults extends React.Component {
       <Text style={styles.conditions}>{item.conditions}</Text>
       <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
       <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
+      
     </View>
   );
     // console.log(this.props, 'PROPS FROM SEARCH RESULTS IN COMPONENT')
     console.log(this.props.forecastData.simpleforecast, 'props experiment')
     return (
-      <View style={styles.container}>
-        {/* <Header/> */}
+    <ScrollView> 
+     <View style={styles.container}>
         {dailyForecast}
       </View>
+    </ScrollView>
     );
   }
 }
