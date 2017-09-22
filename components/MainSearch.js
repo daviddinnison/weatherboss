@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { Alert, AppRegistry, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { Alert, AppRegistry, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
 import { Button, SearchBar } from 'react-native-elements';
 
@@ -24,6 +24,7 @@ export class MainSearch extends React.Component {
   
   makeSearch() {
 
+    Keyboard.dismiss();
     this.props.dispatch(getWeather(this.state.userInputState, this.state.userInputCity));
   }
 
