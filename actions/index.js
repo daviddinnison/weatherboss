@@ -6,9 +6,12 @@ export const getWeatherRequest = () => ({
 });
 
 export const GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
-export const getWeatherSuccess = forecastData => ({
+// export const getWeatherSuccess = (forecastData, userState, userCity) => ({
+export const getWeatherSuccess = (forecastData) => ({
     type: GET_WEATHER_SUCCESS,
     forecastData
+    // userState,
+    // userCity
 });
 
 export const GET_WEATHER_ERROR = 'GET_WEATHER_ERROR';
@@ -34,7 +37,8 @@ export const getWeather = (uSstate, city) => dispatch => {
             const userState = uSstate;
             // console.log('DISPATCH',dispatch(getWeatherSuccess(forecastData, userState, userCity)))
 
-            dispatch(getWeatherSuccess(forecastData, userState, userCity));
+            dispatch(getWeatherSuccess(forecastData));
+            // dispatch(getWeatherSuccess(forecastData, userState, userCity));
             Actions.results();
         })
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { Alert, Button, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 import Collapsible from 'react-native-collapsible';
 
@@ -34,21 +34,24 @@ export class SearchResults extends React.Component {
   render() {
     console.log(this.props, 'PROPS')
     const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
-    <View key={item.period} style={styles.dailyresult}>
-      <Text style={styles.date}>{item.date.pretty}</Text>
-      <Image style= {{ height:50, width: 50 }} source={{uri: `${item.icon_url}`}}/>
-      <Text style={styles.conditions}>{item.conditions}</Text>
-      <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
-      <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
-      <Button color='#76CCBE' title='more' onPress={() => this.expandResult()}/>
-      <Collapsible collapsed={this.state.collapsed} align="center">
-        <View style={styles.detailcontainer}>
-          <Text style={styles.detail}>Precipitation:{item.qpf_allday.mm} mm</Text>
-          <Text style={styles.detail}>Avg humidity:{item.avehumidity} %</Text>
-          <Text style={styles.detail}>Avg wind:{item.avewind.mph} mph</Text>
+ 
+      <TouchableHighlight key={item.period} onPress={() => this.expandResult()}>
+        <View style={styles.dailyresult}>
+          <Text style={styles.date}>{item.date.pretty}</Text>
+          <Image style= {{ height:50, width: 50 }} source={{uri: `${item.icon_url}`}}/>
+          <Text style={styles.conditions}>{item.conditions}</Text>
+          <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
+          <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
+          <Collapsible collapsed={this.state.collapsed} align="center">
+            <View style={styles.detailcontainer}>
+              <Text style={styles.detail}>Precipitation:{item.qpf_allday.mm} mm</Text>
+              <Text style={styles.detail}>Avg humidity:{item.avehumidity} %</Text>
+              <Text style={styles.detail}>Avg wind:{item.avewind.mph} mph</Text>
+            </View>
+          </Collapsible>
         </View>
-      </Collapsible>
-    </View>
+      </TouchableHighlight>
+ 
   );
     // console.log(this.props.forecastData.simpleforecast, 'props experiment')
     return (
