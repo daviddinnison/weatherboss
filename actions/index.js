@@ -20,9 +20,9 @@ export const getWeatherError = message => ({
     message
 });
 
-export const getWeather = (input) => dispatch => {
+export const getWeather = (userInput) => dispatch => {
     dispatch(getWeatherRequest());
-    fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${input}.json`, {})
+    fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${userInput}.json`, {})
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.statusText);
