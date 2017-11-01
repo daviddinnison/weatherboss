@@ -16,13 +16,12 @@ import { getWeather } from '../actions';
 
 export class MainSearch extends React.Component {
   state = {
-    userInputState: '',
-    userInputCity: ''
+    userInput: '',
   }
   
   makeSearch() {
     Keyboard.dismiss();
-    this.props.dispatch(getWeather(this.state.userInputState, this.state.userInputCity));
+    this.props.dispatch(getWeather(this.state.userInput));
   }
 
   render() {
@@ -36,15 +35,10 @@ export class MainSearch extends React.Component {
           <TextInput style={styles.input} 
           textAlign="center"
           underlineColorAndroid='rgba(0,0,0,0)'
-          onChangeText={(city) => this.setState({userInputCity: city})} 
-          placeholder="city"/>
+          onChangeText={(input) => this.setState({userInput: input})} 
+          placeholder="New York, NY"/>
 
-          <TextInput style={styles.input} 
-          textAlign="center" 
-          underlineColorAndroid='rgba(0,0,0,0)'
-          maxLength = {2}
-          onChangeText={(usState) => this.setState({userInputState: usState})}  
-          placeholder="state abbrev"/>
+          
         </View>
         <Button backgroundColor='#12CC94' onPress={() => {this.makeSearch()}} title='search' />
       </View>

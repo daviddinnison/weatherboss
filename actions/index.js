@@ -20,9 +20,9 @@ export const getWeatherError = message => ({
     message
 });
 
-export const getWeather = (uSstate, city) => dispatch => {
+export const getWeather = (input) => dispatch => {
     dispatch(getWeatherRequest());
-    fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${uSstate}/${city}.json`, {})
+    fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${input}.json`, {})
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.statusText);
@@ -31,14 +31,8 @@ export const getWeather = (uSstate, city) => dispatch => {
             return res.json();
         })
         .then(forecastData => {
-            // console.log('usState in action', uSstate);
-            // console.log('city in action', city);
-            const userCity = city;
-            const userState = uSstate;
-            // console.log('DISPATCH',dispatch(getWeatherSuccess(forecastData, userState, userCity)))
 
             dispatch(getWeatherSuccess(forecastData));
-            // dispatch(getWeatherSuccess(forecastData, userState, userCity));
             Actions.results();
         })
 
