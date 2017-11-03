@@ -14,7 +14,6 @@ export const mainReducer = (state = initialState, action) => {
         }
 
         case 'GET_WEATHER_SUCCESS': {
-            console.log(action, 'ACTION FROM GET_WEATHER_SUCCESS')
             return Object.assign({}, state, {
                 forecastData: action.forecastData,
                 forecastCity: action.userCity,
@@ -29,6 +28,28 @@ export const mainReducer = (state = initialState, action) => {
                 error: action.message
             });
         }
+
+        case 'GET_CURRENTCONDITION_REQUEST': {
+            return Object.assign({}, state, {
+                loading: true
+            });
+        }
+
+        case 'GET_CURRENTCONDITION_SUCCESS': {
+            console.log(action, 'ACTION FROM GET_CURRENTCONDITION_SUCCESS')
+            return Object.assign({}, state, {
+                currentData: action.currentData,
+                loading: false
+            });
+        }
+
+        case 'GET_CURRENTCONDITION_ERROR': {
+            return Object.assign({}, state, {
+                loading: false,
+                error: action.message
+            });
+        }
+
 
         default: return state;
     }

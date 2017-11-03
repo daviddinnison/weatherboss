@@ -11,7 +11,7 @@ import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from '
 import SearchResults from './SearchResults';
 
 //actions
-import { getWeather } from '../actions';
+import { getWeather, getCurrentConditions } from '../actions';
 
 
 export class MainSearch extends React.Component {
@@ -22,6 +22,7 @@ export class MainSearch extends React.Component {
   makeSearch() {
     Keyboard.dismiss();
     this.props.dispatch(getWeather(this.state.userInput));
+    this.props.dispatch(getCurrentConditions(this.state.userInput));
   }
 
   render() {
