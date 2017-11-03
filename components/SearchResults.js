@@ -7,6 +7,9 @@ import { Alert, Button, Image, ScrollView, StyleSheet, Text, TouchableHighlight,
 import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 import Collapsible from 'react-native-collapsible';
 
+//components
+import CurrentConditions from './CurrentConditions';
+
 export class SearchResults extends React.Component {
   state = {
     collapsed: true,
@@ -60,6 +63,7 @@ export class SearchResults extends React.Component {
       <Text style={styles.yourlocalforecast}>{this.props.forecastCity}Local forecast</Text>
     </View>
      <View style={styles.container}>
+        <CurrentConditions/>
         {dailyForecast}
       </View>
     </ScrollView>
