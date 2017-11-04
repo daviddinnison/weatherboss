@@ -61,7 +61,7 @@ export const getCurrentConditions = (userInput) => dispatch => {
     dispatch(getCurrentConditionRequest());
     fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/conditions/q/${userInput}.json`, {})
         .then(res => {
-            console.log('INSIDE FIRST .THEN')
+            // console.log('INSIDE FIRST .THEN')
             if (!res.ok) {
                 throw new Error(res.statusText);
                 // Actions.error();
@@ -69,7 +69,7 @@ export const getCurrentConditions = (userInput) => dispatch => {
             return res.json();
         })
         .then(currentForecastData => {
-            console.log(currentForecastData, 'CURRENT FORCAST DATA')
+            // console.log(currentForecastData, 'CURRENT FORCAST DATA')
             dispatch(getCurrentConditionSuccess(currentForecastData));
 
             Actions.results();

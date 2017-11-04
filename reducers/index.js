@@ -36,7 +36,6 @@ export const mainReducer = (state = initialState, action) => {
         }
 
         case 'GET_CURRENTCONDITION_SUCCESS': {
-            console.log(action, 'ACTION FROM GET_CURRENTCONDITION_SUCCESS')
             return Object.assign({}, state, {
                 currentData: action.currentData,
                 loading: false
