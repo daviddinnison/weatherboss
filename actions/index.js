@@ -35,27 +35,6 @@ export const getCurrentConditionError = message => ({
 });
 
 export const getWeather = (userInput) => dispatch => {
-    // dispatch(getCurrentConditionRequest());
-    // fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/conditions/q/${userInput}.json`, {})
-    //     .then(res => {
-    //         console.log('INSIDE FIRST .THEN')
-    //         if (!res.ok) {
-    //             throw new Error(res.statusText);
-    //             // Actions.error();
-    //         }
-    //         return res.json();
-    //     })
-    //     .then(currentForecastData => {
-    //         console.log(currentForecastData, 'CURRENT FORCAST DATA')
-    //         dispatch(getCurrentConditionSuccess(currentForecastData));
-
-    //         Actions.results();
-    //     })
-
-    //     .catch(err => {
-    //         dispatch(getCurrentConditionError(err));
-    //         // Actions.error();
-    //     });
 
     dispatch(getWeatherRequest());
     fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${userInput}.json`, {})
