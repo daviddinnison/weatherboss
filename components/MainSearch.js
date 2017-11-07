@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = function(state){
     return {
+      currentData: state.currentData,
       currentUser: state.currentUser,
       forecastData: state.forecastData,
       forecastCity: state.forecastCity,

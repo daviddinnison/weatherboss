@@ -1,6 +1,7 @@
 import actions from '../actions';
 
 const initialState = {
+    currentData: {},
     currentUser: 'David Dinnison',
     forecastData: {}
 };

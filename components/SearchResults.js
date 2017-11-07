@@ -8,7 +8,7 @@ import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-r
 import Collapsible from 'react-native-collapsible';
 
 //components
-import CurrentConditions from './CurrentConditions';
+// import CurrentConditions from './CurrentConditions';
 
 export class SearchResults extends React.Component {
   state = {
@@ -35,26 +35,36 @@ export class SearchResults extends React.Component {
   };
   
   render() {
-  //   const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
+    // const current = this.props.currentData.current_observation;
+    console.log(this.props.currentData, 'CURRENT DATA IN SEARCH SERULTS')
+    const currentConditions = (
+      <View>
+        <Text>test</Text>
+        <Text>{this.props.currentData.current_observation.wind_dir}</Text>
+       <Text>{this.props.currentData.current_observation.wind_dir}</Text>
+      </View>
+  );
+
+    const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
  
-  //     <TouchableHighlight key={item.period} onPress={() => this.expandResult()}>
-  //       <View style={styles.dailyresult}>
-  //         <Text style={styles.date}>{item.date.pretty}</Text>
-  //         <Image style= {{ height:50, width: 50 }} source={{uri: `${item.icon_url}`}}/>
-  //         <Text style={styles.conditions}>{item.conditions}</Text>
-  //         <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
-  //         <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
-  //         <Collapsible collapsed={this.state.collapsed} align="center">
-  //           <View style={styles.detailcontainer}>
-  //             <Text style={styles.detail}>Precipitation:{item.qpf_allday.mm} mm</Text>
-  //             <Text style={styles.detail}>Avg humidity:{item.avehumidity} %</Text>
-  //             <Text style={styles.detail}>Avg wind:{item.avewind.mph} mph</Text>
-  //           </View>
-  //         </Collapsible>
-  //       </View>
-  //     </TouchableHighlight>
+      <TouchableHighlight key={item.period} onPress={() => this.expandResult()}>
+        <View style={styles.dailyresult}>
+          <Text style={styles.date}>{item.date.pretty}</Text>
+          <Image style= {{ height:50, width: 50 }} source={{uri: `${item.icon_url}`}}/>
+          <Text style={styles.conditions}>{item.conditions}</Text>
+          <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
+          <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
+          <Collapsible collapsed={this.state.collapsed} align="center">
+            <View style={styles.detailcontainer}>
+              <Text style={styles.detail}>Precipitation:{item.qpf_allday.mm} mm</Text>
+              <Text style={styles.detail}>Avg humidity:{item.avehumidity} %</Text>
+              <Text style={styles.detail}>Avg wind:{item.avewind.mph} mph</Text>
+            </View>
+          </Collapsible>
+        </View>
+      </TouchableHighlight>
  
-  // );
+  );
     // console.log(this.props.forecastData.simpleforecast, 'props experiment')
     return (
     <ScrollView> 
@@ -62,8 +72,9 @@ export class SearchResults extends React.Component {
       <Text style={styles.yourlocalforecast}>{this.props.forecastCity}Local forecast</Text>
     </View>
      <View style={styles.container}>
-        <CurrentConditions/>
-        {/* {dailyForecast} */}
+        {currentConditions}
+        {dailyForecast}
+        <Text>test</Text>
       </View>
     </ScrollView>
     );
@@ -122,6 +133,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = function(state){
     return {
+      currentData: state.currentData,
       currentUser: state.currentUser,
       forecastData: state.forecastData.forecast,
       forecastCity: state.forecastCity,
