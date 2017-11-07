@@ -8,7 +8,7 @@ import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-r
 import Collapsible from 'react-native-collapsible';
 
 //components
-// import CurrentConditions from './CurrentConditions';
+import CurrentConditions from './CurrentConditions';
 
 export class SearchResults extends React.Component {
   state = {
@@ -36,14 +36,14 @@ export class SearchResults extends React.Component {
   
   render() {
     // const current = this.props.currentData.current_observation;
-    console.log(this.props.currentData, 'CURRENT DATA IN SEARCH SERULTS')
-    const currentConditions = (
-      <View>
-        <Text>test</Text>
-        <Text>{this.props.currentData.current_observation.wind_dir}</Text>
-       <Text>{this.props.currentData.current_observation.wind_dir}</Text>
-      </View>
-  );
+  //   console.log(this.props.currentData, 'CURRENT DATA IN SEARCH SERULTS')
+  //   const currentConditions = (
+  //     <View>
+  //       <Text>test</Text>
+  //       <Text>{this.props.currentData.current_observation.wind_dir}</Text>
+  //      <Text>{this.props.currentData.current_observation.wind_dir}</Text>
+  //     </View>
+  // );
 
     const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
  
@@ -65,14 +65,14 @@ export class SearchResults extends React.Component {
       </TouchableHighlight>
  
   );
-    // console.log(this.props.forecastData.simpleforecast, 'props experiment')
+    console.log(this.props.currentData, 'props experiment')
     return (
     <ScrollView> 
     <View style={styles.searchheading}>
-      <Text style={styles.yourlocalforecast}>{this.props.currentData.current_observation.display_location.full}</Text>
+      {/* <Text style={styles.yourlocalforecast}>{this.props.currentData.current_observation.display_location.full}</Text> */}
     </View>
      <View style={styles.container}>
-        {currentConditions}
+        {/* <CurrentConditions/> */}
         {dailyForecast}
         <Text>test</Text>
       </View>

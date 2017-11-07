@@ -71,8 +71,7 @@ export const getCurrentConditions = (userInput) => dispatch => {
         .then(currentForecastData => {
             // console.log(currentForecastData, 'CURRENT FORCAST DATA')
             dispatch(getCurrentConditionSuccess(currentForecastData));
-
-            // Actions.results();
+            Actions.results();
         })
 
         .catch(err => {

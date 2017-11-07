@@ -17,8 +17,6 @@ export const mainReducer = (state = initialState, action) => {
         case 'GET_WEATHER_SUCCESS': {
             return Object.assign({}, state, {
                 forecastData: action.forecastData,
-                forecastCity: action.userCity,
-                forecastState: action.userState,
                 loading: false
             });
         }
