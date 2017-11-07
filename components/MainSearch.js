@@ -21,8 +21,8 @@ export class MainSearch extends React.Component {
   
   makeSearch() {
     Keyboard.dismiss();
-    this.props.dispatch(getWeather(this.state.userInput));
     this.props.dispatch(getCurrentConditions(this.state.userInput));
+    this.props.dispatch(getWeather(this.state.userInput));
   }
 
   render() {
