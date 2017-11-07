@@ -69,7 +69,7 @@ export class SearchResults extends React.Component {
     return (
     <ScrollView> 
     <View style={styles.searchheading}>
-      <Text style={styles.yourlocalforecast}>{this.props.forecastCity}Local forecast</Text>
+      <Text style={styles.yourlocalforecast}>{this.props.currentData.current_observation.display_location.full}</Text>
     </View>
      <View style={styles.container}>
         {currentConditions}
