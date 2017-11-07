@@ -4,18 +4,22 @@ import { connect } from 'react-redux';
 
 //react native
 import { Alert, Button, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
+import { Router, Route, Schema, Animations, TabBar, Actions } from 'react-native-router-flux';
 import Collapsible from 'react-native-collapsible';
 
 //components
 import CurrentConditions from './CurrentConditions';
 
 export class SearchResults extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     collapsed: true,
     activeSection: false
   }
-  
+
 
   expandResult() {
     this.setState({ collapsed: !this.state.collapsed });
@@ -33,24 +37,24 @@ export class SearchResults extends React.Component {
   static navigationOptions = {
     header: null
   };
-  
+
   render() {
     // const current = this.props.currentData.current_observation;
-  //   console.log(this.props.currentData, 'CURRENT DATA IN SEARCH SERULTS')
-  //   const currentConditions = (
-  //     <View>
-  //       <Text>test</Text>
-  //       <Text>{this.props.currentData.current_observation.wind_dir}</Text>
-  //      <Text>{this.props.currentData.current_observation.wind_dir}</Text>
-  //     </View>
-  // );
+    //   console.log(this.props.currentData, 'CURRENT DATA IN SEARCH SERULTS')
+    //   const currentConditions = (
+    //     <View>
+    //       <Text>test</Text>
+    //       <Text>{this.props.currentData.current_observation.wind_dir}</Text>
+    //      <Text>{this.props.currentData.current_observation.wind_dir}</Text>
+    //     </View>
+    // );
 
     const dailyForecast = this.props.forecastData.simpleforecast.forecastday.map((item) =>
- 
+
       <TouchableHighlight key={item.period} onPress={() => this.expandResult()}>
         <View style={styles.dailyresult}>
           <Text style={styles.date}>{item.date.pretty}</Text>
-          <Image style= {{ height:50, width: 50 }} source={{uri: `${item.icon_url}`}}/>
+          <Image style={{ height: 50, width: 50 }} source={{ uri: `${item.icon_url}` }} />
           <Text style={styles.conditions}>{item.conditions}</Text>
           <Text style={styles.high}>High: {item.high.fahrenheit}°F</Text>
           <Text style={styles.low}>Low: {item.low.fahrenheit}°F</Text>
@@ -63,20 +67,20 @@ export class SearchResults extends React.Component {
           </Collapsible>
         </View>
       </TouchableHighlight>
- 
-  );
+
+    );
     console.log(this.props.currentData, 'props experiment')
     return (
-    <ScrollView> 
-    <View style={styles.searchheading}>
-      {/* <Text style={styles.yourlocalforecast}>{this.props.currentData.current_observation.display_location.full}</Text> */}
-    </View>
-     <View style={styles.container}>
-        {/* <CurrentConditions/> */}
-        {dailyForecast}
-        <Text>test</Text>
-      </View>
-    </ScrollView>
+      <ScrollView>
+        <View style={styles.searchheading}>
+          {/* <Text style={styles.yourlocalforecast}>{this.props.currentData.display_location.full}</Text> */}
+        </View>
+        <View style={styles.container}>
+          <CurrentConditions/>
+          {dailyForecast}
+          <Text>test</Text>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
   dailyresult: {
     alignItems: 'center',
     backgroundColor: 'white',
-    borderColor: 'gray', 
+    borderColor: 'gray',
     borderWidth: 3,
     marginBottom: 15,
     padding: 10,
@@ -131,14 +135,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = function(state){
-    return {
-      currentData: state.currentData,
-      currentUser: state.currentUser,
-      forecastData: state.forecastData.forecast,
-      forecastCity: state.forecastCity,
-      forecastState: state.forecastState
-    }
+const mapStateToProps = function (state) {
+  return {
+    currentData: state.currentData,
+    currentUser: state.currentUser,
+    forecastData: state.forecastData.forecast,
+    forecastCity: state.forecastCity,
+    forecastState: state.forecastState
+  }
 };
 
 export default connect(mapStateToProps)(SearchResults);

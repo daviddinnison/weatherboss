@@ -36,7 +36,7 @@ export const mainReducer = (state = initialState, action) => {
 
         case 'GET_CURRENTCONDITION_SUCCESS': {
             return Object.assign({}, state, {
-                currentData: action.currentData,
+                currentData: action.currentData.current_observation,
                 loading: false
             });
         }
