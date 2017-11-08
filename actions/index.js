@@ -35,7 +35,6 @@ export const getCurrentConditionError = message => ({
 });
 
 export const getWeather = (userInput) => dispatch => {
-
     dispatch(getWeatherRequest());
     fetch(`http://api.wunderground.com/api/b20a7be72cb0b77a/forecast/q/${userInput}.json`, {})
         .then(res => {

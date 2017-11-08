@@ -3,9 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { Alert, AppRegistry, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import { Button, SearchBar } from 'react-native-elements';
-import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
+import { Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene } from 'react-native-router-flux';
 
 //components
 import SearchResults from './SearchResults';
@@ -37,7 +37,7 @@ export class MainSearch extends React.Component {
           textAlign="center"
           underlineColorAndroid='rgba(0,0,0,0)'
           onChangeText={(input) => this.setState({userInput: input})} 
-          placeholder="New York, NY"/>
+          placeholder="Washington DC"/>
 
           
         </View>
