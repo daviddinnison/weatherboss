@@ -2,18 +2,20 @@ import actions from '../actions';
 
 const initialState = {
     currentData: {
-        current_observation: {
-            display_location: {
-                full: undefined
-            }
-        }
+        display_location: {
+            full: undefined
+        },
+        observation_time: undefined,
+        feelslike_f: undefined,
+        relative_humidity: undefined,
+        precip_1hr_in: undefined
     },
     currentUser: 'David Dinnison',
     forecastData: {}
 };
 
 export const mainReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'GET_WEATHER_REQUEST': {
             return Object.assign({}, state, {
                 loading: true
@@ -42,7 +44,7 @@ export const mainReducer = (state = initialState, action) => {
 
         case 'GET_CURRENTCONDITION_SUCCESS': {
             return Object.assign({}, state, {
-                currentData: action.currentData,
+                currentData: action.currentData.current_observation,
                 loading: false
             });
         }
