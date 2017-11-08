@@ -11,8 +11,11 @@ const initialState = {
         precip_1hr_in: undefined,
         icon_url: undefined,
     },
-    currentUser: 'David Dinnison',
-    forecastData: {}
+    currentUser: {
+        name: 'David',
+        locations: ['Washington, DC', 'Auckland, NZ'],
+    },
+    forecastData: {},
 };
 
 export const mainReducer = (state = initialState, action) => {
