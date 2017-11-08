@@ -80,8 +80,8 @@ export class SearchResults extends React.Component {
         </View>
         <View style={styles.container}>
           <CurrentConditions/>
+          <Text style={styles.conditions}>{this.props.currentData.observation_time}</Text>
           {dailyForecast}
-          <Text>test</Text>
         </View>
       </ScrollView>
     );

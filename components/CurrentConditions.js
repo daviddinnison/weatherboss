@@ -19,7 +19,7 @@ export class CurrentConditions extends React.Component {
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View style={styles.currentflex}>
             <Text>{current.weather}</Text>
-            <Image style={{ height: 50, width: 50 }} source={{ uri: `${current.icon_url}` }} />
+            <Image style={{ height: 75, width: 75 }} source={{ uri: `${current.icon_url}` }} />
           </View>
           <View style={styles.currentflex}>
             <Text>Feels like: {current.feelslike_f}° F</Text>
@@ -27,7 +27,6 @@ export class CurrentConditions extends React.Component {
             <Text>Humidity: {current.relative_humidity}</Text>
           </View>
         </View>
-        <Text style={styles.lastupdated}>{current.observation_time}</Text>
       </View>
     );
   }
@@ -47,9 +46,6 @@ const styles = StyleSheet.create({
   currentflex: {
     padding: 10,
   },
-  lastupdated: {
-    fontStyle: 'italic',
-  }
 });
 
 const mapStateToProps = function (state) {
