@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { StyleSheet, Text,  View } from 'react-native';
+import { Image, StyleSheet, Text,  View } from 'react-native';
 
 
 
@@ -14,20 +14,29 @@ export class CurrentConditions extends React.Component {
     console.log(this.props.currentData, 'PROPS FROM CURRENT CONDITIONS')
     
     return (
-      <View>
+      <View style={styles.currentconditions}>
         <Text>Current weather:</Text>
         <Text>{current.weather}</Text>
+        <Text>Feels like: {current.feelslike_f}° F</Text>
+        <Image style={{ height: 50, width: 50 }} source={{ uri: `${current.icon_url}` }} />
         <Text>Precipitation: {current.precip_1hr_in}</Text>
-        <Text>Feels like: {current.feelslike_f}</Text>
         <Text>Humidity: {current.relative_humidity}</Text> 
-        <Text>{current.observation_time}</Text>
+        <Text style={styles.lastupdated}>{current.observation_time}</Text>
     </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
- 
+  currentconditions: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    marginBottom: 15,
+    padding: 10,
+  },
+  lastupdated: {
+    fontStyle: 'italic',
+  }
 });
 
 const mapStateToProps = function(state){

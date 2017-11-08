@@ -8,7 +8,8 @@ const initialState = {
         observation_time: undefined,
         feelslike_f: undefined,
         relative_humidity: undefined,
-        precip_1hr_in: undefined
+        precip_1hr_in: undefined,
+        icon_url: undefined,
     },
     currentUser: 'David Dinnison',
     forecastData: {}
