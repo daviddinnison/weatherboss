@@ -13,7 +13,15 @@ const initialState = {
     },
     currentUser: {
         name: 'David',
-        locations: ['Washington, DC', 'Auckland, NZ'],
+        locations: [
+            {
+                name: 'Washington DC',
+            },
+            {
+                name: 'Auckland, NZ',
+            }
+        ],
+
     },
     forecastData: {},
 };

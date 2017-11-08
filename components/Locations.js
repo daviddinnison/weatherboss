@@ -15,11 +15,19 @@ import { getWeather, getCurrentConditions } from '../actions';
 
 
 export class Locations extends React.Component {
-  render() {
+  
+  
+    render() {
+        const savedLocations = this.props.currentUser.locations.map((item) =>
+        <View>
+            <Text>{item.name}</Text>
+        </View>
+        
+            );
     return (
       <View>
           <Text>Welcome, {this.props.currentUser.name}</Text>
-        
+          {savedLocations}
       </View>
     );
   }
