@@ -1,7 +1,13 @@
 import actions from '../actions';
 
 const initialState = {
-    currentData: {},
+    currentData: {
+        current_observation: {
+            display_location: {
+                full: undefined
+            }
+        }
+    },
     currentUser: 'David Dinnison',
     forecastData: {}
 };
@@ -36,7 +42,7 @@ export const mainReducer = (state = initialState, action) => {
 
         case 'GET_CURRENTCONDITION_SUCCESS': {
             return Object.assign({}, state, {
-                currentData: action.currentData.current_observation,
+                currentData: action.currentData,
                 loading: false
             });
         }

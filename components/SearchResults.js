@@ -10,6 +10,9 @@ import Collapsible from 'react-native-collapsible';
 //components
 import CurrentConditions from './CurrentConditions';
 
+//actions
+import { getWeather, getCurrentConditions } from '../actions';
+
 export class SearchResults extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +76,7 @@ export class SearchResults extends React.Component {
     return (
       <ScrollView>
         <View style={styles.searchheading}>
-          {/* <Text style={styles.yourlocalforecast}>{this.props.currentData.display_location.full}</Text> */}
+          <Text style={styles.yourlocalforecast}>{this.props.currentData.current_observation.display_location.full}</Text>
         </View>
         <View style={styles.container}>
           <CurrentConditions/>
@@ -139,9 +142,7 @@ const mapStateToProps = function (state) {
   return {
     currentData: state.currentData,
     currentUser: state.currentUser,
-    forecastData: state.forecastData.forecast,
-    forecastCity: state.forecastCity,
-    forecastState: state.forecastState
+    forecastData: state.forecastData.forecast
   }
 };
 
