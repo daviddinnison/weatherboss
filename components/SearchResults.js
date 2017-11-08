@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   searchheading: {
     alignItems: 'center',
     backgroundColor: '#6088BB',
-    marginBottom: 15,
+    marginBottom: 5,
     padding: 30,
   },
   yourlocalforecast: {

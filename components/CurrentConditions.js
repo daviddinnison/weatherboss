@@ -15,13 +15,13 @@ export class CurrentConditions extends React.Component {
 
     return (
       <View style={styles.currentconditions}>
-        <Text>Current weather:</Text>
+        <Text style={styles.currenttext}>Current weather:</Text>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <View>
+          <View style={styles.currentflex}>
             <Text>{current.weather}</Text>
             <Image style={{ height: 50, width: 50 }} source={{ uri: `${current.icon_url}` }} />
           </View>
-          <View>
+          <View style={styles.currentflex}>
             <Text>Feels like: {current.feelslike_f}° F</Text>
             <Text>Precipitation: {current.precip_1hr_in}</Text>
             <Text>Humidity: {current.relative_humidity}</Text>
@@ -39,6 +39,12 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     backgroundColor: 'white',
     marginBottom: 15,
+    padding: 10,
+  },
+  currenttext: {
+    fontWeight: 'bold',
+  },
+  currentflex: {
     padding: 10,
   },
   lastupdated: {
