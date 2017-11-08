@@ -15,9 +15,11 @@ const initialState = {
         name: 'David',
         locations: [
             {
+                id: 1,
                 name: 'Washington DC',
             },
             {
+                id: 2,
                 name: 'Auckland, NZ',
             }
         ],

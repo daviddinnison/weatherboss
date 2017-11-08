@@ -15,31 +15,38 @@ import { getWeather, getCurrentConditions } from '../actions';
 
 
 export class Locations extends React.Component {
-  
-  
+    makeSearch(input) {
+        // console.log(input)
+        this.props.dispatch(getCurrentConditions(input));
+        this.props.dispatch(getWeather(input));
+      }
+
     render() {
         const savedLocations = this.props.currentUser.locations.map((item) =>
-        <View>
-            <Text>{item.name}</Text>
-        </View>
-        
-            );
-    return (
-      <View>
-          <Text>Welcome, {this.props.currentUser.name}</Text>
-          {savedLocations}
-      </View>
-    );
-  }
+            <TouchableHighlight key={item.id} onPress={() => this.makeSearch(item.name)}>
+                <View>
+                    <Text>{item.name}</Text>
+                </View>
+            </TouchableHighlight>
+        );
+
+
+        return (
+            <View>
+                <Text>Welcome, {this.props.currentUser.name}</Text>
+                {savedLocations}
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
 
 });
 
-const mapStateToProps = function(state){
+const mapStateToProps = function (state) {
     return {
-      currentUser: state.currentUser,
+        currentUser: state.currentUser,
     }
 };
 
