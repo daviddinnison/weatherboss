@@ -11,7 +11,7 @@ export class CurrentConditions extends React.Component {
   // {<Text>{current.display_location.full}</Text>}
   render() {
     const current = this.props.currentData;
-    console.log(this.props.currentData, 'PROPS FROM CURRENT CONDITIONS')
+    // console.log(this.props.currentData, 'PROPS FROM CURRENT CONDITIONS')
 
     return (
       <View style={styles.currentconditions}>

@@ -19,29 +19,38 @@ export class Locations extends React.Component {
         // console.log(input)
         this.props.dispatch(getCurrentConditions(input));
         this.props.dispatch(getWeather(input));
-      }
+    }
 
+    makeNewLocation() {
+        console.log('MAKE NEW LOCATION')
+    }
     render() {
         const savedLocations = this.props.currentUser.locations.map((item) =>
-            <TouchableHighlight key={item.id} onPress={() => this.makeSearch(item.name)}>
-                <View>
-                    <Text>{item.name}</Text>
-                </View>
+            <TouchableHighlight key={item.id} onPress={() => this.makeSearch(item.name)} style={styles.locationresult}>
+                <Text>{item.name}</Text>
             </TouchableHighlight>
         );
 
 
         return (
             <View>
-                <Text>Welcome, {this.props.currentUser.name}</Text>
+                <Text>Hello, {this.props.currentUser.name}</Text>
                 {savedLocations}
+                <Button backgroundColor='#12CC94' onPress={() => { this.makeNewLocation() }} title='new location' />
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-
+    locationresult: {
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderColor: 'gray',
+        borderWidth: 3,
+        marginBottom: 15,
+        padding: 10,
+      },
 });
 
 const mapStateToProps = function (state) {

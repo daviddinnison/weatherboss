@@ -12,7 +12,7 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 
 export class LogIn extends React.Component {
     testFunc() {
-        console.log('something')
+        // console.log('something')
       }
     
     render() {

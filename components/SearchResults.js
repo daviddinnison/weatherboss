@@ -72,7 +72,7 @@ export class SearchResults extends React.Component {
       </TouchableHighlight>
 
     );
-    console.log(this.props.currentData, 'props experiment')
+    // console.log(this.props.currentData, 'props experiment')
     return (
       <ScrollView>
         <View style={styles.searchheading}>
