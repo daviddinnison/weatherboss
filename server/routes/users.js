@@ -5,6 +5,22 @@ const bcrypt = require('bcryptjs');
 
 router.use(bodyParser.json());
 
+const { Users } = require('../models');
+
+router.get('/', (req, res) => {
+  
+  Users
+    .find()
+    .exec()
+    .then(users => {
+      res.json(users.map(post => post.apiRepr()));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'something went terribly wrong' });
+    });
+});
+
 // Create a new user in DB
 router.post('/', (req, res) => {
   const requiredFields = ['username', 'password'];
@@ -24,8 +40,8 @@ router.post('/', (req, res) => {
   bcrypt.hash(password, 10)
     .then(result => {
       hashedPassword = result;
-
       return req.app.locals.knex
+      console.log(hashedPassword, 'HASHEDPASSWORD')
         .insert({
           username,
           password: hashedPassword
