@@ -17,7 +17,7 @@ function runServer() {
     let databaseUri =
         process.env.DATABASE_URI ||
         global.databaseUri ||
-        'mongodb://dev:dev@ds155325.mlab.com:55325/weatherboss';
+        'mongodb://weatherbossuser:sillypineapple2@ds137206.mlab.com:37206/weatherboss';
     mongoose.Promise = global.Promise;
     mongoose.connect(databaseUri).then(function () {
         app.listen(process.env.PORT || 3001, err => {
