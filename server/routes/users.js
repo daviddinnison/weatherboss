@@ -5,21 +5,21 @@ const bcrypt = require('bcryptjs');
 
 router.use(bodyParser.json());
 
-const { Users } = require('../models');
+// const { Users } = require('../models');
 
-router.get('/', (req, res) => {
+// router.get('/', (req, res) => {
   
-  Users
-    .find()
-    .exec()
-    .then(users => {
-      res.json(users.map(post => post.apiRepr()));
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'something went terribly wrong' });
-    });
-});
+//   Users
+//     .find()
+//     .exec()
+//     .then(users => {
+//       res.json(users.map(post => post.apiRepr()));
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({ error: 'something went terribly wrong' });
+//     });
+// });
 
 // Create a new user in DB
 router.post('/', (req, res) => {

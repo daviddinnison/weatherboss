@@ -1,14 +1,17 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcryptjs');
 
 const app = express();
 
 
 global.app = app;
 
-console.log('TEST')
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 
 
@@ -29,6 +32,46 @@ function runServer() {
         });
     });
 }
+
+const { Users } = require('./models');
+
+app.get('/api/users', (req, res) => {
+
+    Users
+        .find()
+        .limit(10)
+        .exec()
+        .then(users => {
+            res.json({
+              restaurants: users.map(
+                (users) => users.serialize())
+            });
+          })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: 'something went terribly wrong' });
+        });
+});
+
+app.post('/api/users', (req, res) => {
+
+    const requiredFields = ['username', 'password'];
+
+    
+    // console.log('REQ BODY', req.body);
+
+    Users
+        .create({
+            username: req.body.username,
+            password: req.body.password
+        })
+        .then(user => res.status(201).json(user.serialize()))
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error' });
+        });
+});
+
 
 function closeServer() {
     return new Promise((resolve, reject) => {

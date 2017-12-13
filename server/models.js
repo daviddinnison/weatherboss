@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-    name: { type: String, required: true },
+    username: { type: String, required: true },
+    password: { type: String, required: true },
     locations: { type: Array }
 });
 
-const User = mongoose.model('User', userSchema);
+//defines what we want to be returned
+userSchema.methods.serialize = function() {
+      return {
+        id: this._id,
+        username: this.username,
+        password:this.password
+      };
+    }
 
-module.exports = { User };
+const Users = mongoose.model('Users', userSchema);
+
+module.exports = { Users };
