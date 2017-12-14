@@ -5,14 +5,6 @@ const bcrypt = require('bcryptjs');
 
 const usersRouter = require('./routes/usersRouter');
 
-
-// const app = express();
-// global.app = app;
-// app.use(bodyParser.urlencoded({
-//     extended: true
-// }));
-// app.use(bodyParser.json());
-
 const morgan = require('morgan');
 app.use(morgan('common'));
 app.use(express.static('public'));
@@ -40,7 +32,6 @@ function runServer() {
 }
 
 app.use('/api/users', usersRouter);
-
 
 function closeServer() {
     return new Promise((resolve, reject) => {
