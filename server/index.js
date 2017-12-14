@@ -39,11 +39,11 @@ app.get('/api/users', (req, res) => {
 
     Users
         .find()
-        .limit(10)
+        // .limit(1)
         .exec()
         .then(users => {
             res.json({
-              restaurants: users.map(
+              user: users.map(
                 (users) => users.serialize())
             });
           })
@@ -56,14 +56,13 @@ app.get('/api/users', (req, res) => {
 app.post('/api/users', (req, res) => {
 
     const requiredFields = ['username', 'password'];
-
-    
+    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     // console.log('REQ BODY', req.body);
 
     Users
         .create({
             username: req.body.username,
-            password: req.body.password
+            password: hashedPassword
         })
         .then(user => res.status(201).json(user.serialize()))
         .catch(err => {
