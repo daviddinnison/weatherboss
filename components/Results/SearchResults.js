@@ -11,7 +11,7 @@ import Collapsible from 'react-native-collapsible';
 import CurrentConditions from './CurrentConditions';
 
 //actions
-import { getWeather, getCurrentConditions } from '../actions';
+import { getWeather, getCurrentConditions } from '../../actions';
 
 export class SearchResults extends React.Component {
   constructor(props) {

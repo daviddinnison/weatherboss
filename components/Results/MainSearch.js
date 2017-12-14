@@ -11,7 +11,7 @@ import { Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene } from
 import SearchResults from './SearchResults';
 
 //actions
-import { getWeather, getCurrentConditions } from '../actions';
+import { getWeather, getCurrentConditions } from '../../actions';
 
 
 export class MainSearch extends React.Component {

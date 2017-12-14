@@ -5,10 +5,10 @@ import React from 'react';
 import { Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene } from 'react-native-router-flux';
 
 //components
-import LogIn from './LogIn';
-import Locations from './Locations';
-import MainSearch from './MainSearch';
-import SearchResults from './SearchResults';
+import LogIn from './Users/LogIn';
+import Locations from './Results/Locations';
+import MainSearch from './Results/MainSearch';
+import SearchResults from './Results/SearchResults';
 import ErrorPage from './ErrorPage';
 
 
@@ -17,8 +17,8 @@ export default class Main extends React.Component {
         return (
             <Router>
                 <Stack key="root">
-                    <Scene key="locations" component={Locations} />
                     <Scene key="login" component={LogIn} />
+                    <Scene key="locations" component={Locations} />
                     <Scene key="search" component={MainSearch} />
                     <Scene key="results" component={SearchResults} />
                     <Scene key="error" component={ErrorPage} />
