@@ -7,13 +7,14 @@ const userSchema = mongoose.Schema({
 });
 
 //defines what we want to be returned
-userSchema.methods.serialize = function() {
-      return {
+userSchema.methods.serialize = function () {
+    return {
         id: this._id,
         username: this.username,
-        password:this.password
-      };
-    }
+        password: this.password
+    };
+}
+  
 
 const Users = mongoose.model('Users', userSchema);
 
