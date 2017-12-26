@@ -30,6 +30,18 @@ const initialState = {
 
 export const mainReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'CREATE_USER_REQUEST': {
+            return Object.assign({}, state, {
+                loading: true
+            });
+        }
+        case 'CREATE_USER_ERROR': {
+            return Object.assign({}, state, {
+                loading: false,
+                error: action.message
+            });
+        }
+
         case 'GET_WEATHER_REQUEST': {
             return Object.assign({}, state, {
                 loading: true

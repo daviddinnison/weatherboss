@@ -1,5 +1,18 @@
 import { Actions } from 'react-native-router-flux';
 
+export const CREATE_USER_REQUEST = 'CREATE_USER_REQUEST';
+export const createUserRequest = (username, password) => ({
+    type: CREATE_USER_REQUEST,
+    username,
+    password
+})
+
+export const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
+export const createUserError = message => ({
+    type: CREATE_USER_ERROR,
+    message
+})
+
 export const GET_WEATHER_REQUEST = 'GET_WEATHER_REQUEST';
 export const getWeatherRequest = () => ({
     type: GET_WEATHER_REQUEST
@@ -33,6 +46,23 @@ export const getCurrentConditionError = message => ({
     type: GET_CURRENTCONDITION_ERROR,
     message
 });
+
+
+export const createUser = (usernameInput, passwordInput) => dispatch => {
+    dispatch(createUserRequest());
+    //format user data
+    let formattedUserInput = {
+        username: usernameInput,
+        password: passwordInput
+    }
+    //send user data
+
+    //error handling
+
+    //front end rendering
+
+    console.log(formattedUserInput)
+};
 
 export const getWeather = (userInput) => dispatch => {
     dispatch(getWeatherRequest());
