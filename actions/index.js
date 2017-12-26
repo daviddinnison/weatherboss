@@ -50,13 +50,17 @@ export const getCurrentConditionError = message => ({
 
 export const createUser = (usernameInput, passwordInput) => dispatch => {
     dispatch(createUserRequest());
-    //format user data
-    let formattedUserInput = {
-        username: usernameInput,
-        password: passwordInput
-    }
-    //send user data
-
+    fetch('/api/users', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: usernameInput,
+          password: passwordInput,
+        })
+      })
     //error handling
 
     //front end rendering

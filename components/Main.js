@@ -19,12 +19,15 @@ export default class Main extends React.Component {
         return (
             <Router>
                 <Stack key="root">
-                    <Scene key="signup" component={SignUp} />
+                {/* unstyled */}
                     <Scene key="usersintro" component={UsersIntro} />
+                    <Scene key="signup" component={SignUp} />
                     <Scene key="locations" component={Locations} />
                     <Scene key="search" component={MainSearch} />
                     <Scene key="results" component={SearchResults} />
                     <Scene key="error" component={ErrorPage} />
+
+                {/* styled */}
                 </Stack>
             </Router>
         );
