@@ -57,16 +57,15 @@ export const createUser = (usernameInput, passwordInput) => dispatch => {
       })
       .then(function (response) {
         console.log(response, 'RESPONSE');
-        Actions.signupsuccess();
+        Actions.dashboard();
       })
       .catch(function (error) {
         console.log(error);
       });
 
     //front end rendering
-
-
 };
+
 
 export const getWeather = (userInput) => dispatch => {
     dispatch(getWeatherRequest());

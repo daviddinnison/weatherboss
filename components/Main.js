@@ -22,8 +22,8 @@ export default class Main extends React.Component {
         return (
             <Router>
                 <Stack key="root">
-                    <Scene key="dashboard" component={Dashboard} />
                     <Scene key="signup" component={SignUp} />
+                    <Scene key="dashboard" component={Dashboard} />
 
                     <Scene key="signupsuccess" component={SignUpSuccess} />
                     <Scene key="usersintro" component={UsersIntro} />

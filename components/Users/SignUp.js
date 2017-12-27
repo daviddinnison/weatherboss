@@ -9,7 +9,7 @@ import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View 
 
 
 //actions
-import { createUser } from '../../actions';
+import { createUser, login } from '../../actions';
 
 
 export class SignUp extends React.Component {
@@ -21,6 +21,9 @@ export class SignUp extends React.Component {
     submitData() {
         Keyboard.dismiss();
         this.props.dispatch(createUser(this.state.usernameInput, this.state.passwordInput))
+        // return this.props
+        //     .dispatch(registerUser(this.state.usernameInput, this.state.passwordInput))
+        //     .then(() => this.props.dispatch(login(username, password)));
     }
 
 
