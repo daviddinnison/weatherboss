@@ -41,7 +41,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     //checks that user and password exists
-    console.log(req.body, 'REQ BODY........')
     const requiredFields = ['username', 'password'];
     const missingField = requiredFields.find(field => !(field in req.body));
     if (missingField) {

@@ -43,7 +43,7 @@ export class SignUp extends React.Component {
                         placeholder='password' />
                 </View>
                 <TouchableHighlight style={styles.button} onPress={() => { this.submitData() }}>
-                    <Text style={styles.text}>Submit</Text>
+                    <Text style={styles.buttonText}>Submit</Text>
                 </TouchableHighlight>
             </View>
         );
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '95%',
     },
-    text: {
+    buttonText: {
         fontSize: 16,
         color: 'white',
     }

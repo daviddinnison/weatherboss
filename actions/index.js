@@ -50,63 +50,19 @@ export const getCurrentConditionError = message => ({
 
 
 export const createUser = (usernameInput, passwordInput) => dispatch => {
-    function _handleError(errorMessage) {
-        console.log(errorMessage);
-    }
-
     dispatch(createUserRequest());
-
-    console.log(JSON.stringify({
-        username: usernameInput,
-        password: passwordInput,
-    }))
-    // http://localhost:3001/api/users/
-    // http://httpbin.org/post
     axios.post('http://192.168.1.203:3001/api/users/', {
         username: usernameInput,
         password: passwordInput
       })
       .then(function (response) {
-        console.log(response);
+        console.log(response, 'RESPONSE');
+        Actions.signupsuccess();
       })
       .catch(function (error) {
         console.log(error);
       });
 
-
-
-
-        // method: 'POST',
-        // headers: {
-        //     // 'Accept': 'application/json',
-        //     'Content-Type': 'application/json',
-        // },
-        // body: `{
-        //     "username": "sdddsdddf3dfdfd1",
-        //     "password": "tessdfdf"
-        // }`
-        // JSON.stringify({
-        //     username: usernameInput,
-        //     password: passwordInput,
-        // })
-    // })
-        // .then(res => {
-        //     if (res.ok) {
-        //         return res.json();
-        //     } else {
-        //         _handleError(`Oops, something went wrong: ${res.status}, ${res.statusText}`);
-        //     }
-        // }).then(function (data) {
-        //     if (data) {
-        //         console.log('success', data);
-        //     }
-        // })
-        // //error handling
-        // .catch(error => {
-        //     // ADD THIS THROW error
-        //     console.log(error)
-        //     _handleError(`There has been a problem with your fetch operation: ${error.message}`)
-        // });
     //front end rendering
 
 
