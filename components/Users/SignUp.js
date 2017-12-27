@@ -2,8 +2,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+
 //react native
 import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+
+
 
 //actions
 import { createUser } from '../../actions';
