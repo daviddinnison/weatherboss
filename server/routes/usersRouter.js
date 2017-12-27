@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-
+const cors = require('cors')
+const {CLIENT_ORIGIN} = require('../config');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
@@ -10,8 +11,14 @@ global.app = app;
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.use(bodyParser.json());
 
+app.use(
+    cors({
+        origin: CLIENT_ORIGIN
+    })
+);
 
 const { Users } = require('../models');
 

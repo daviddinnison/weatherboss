@@ -9,6 +9,7 @@ import { Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene } from
 
 //components
 import SearchResults from './SearchResults';
+import Head from '../Reusable/Head';
 
 //actions
 import { getWeather, getCurrentConditions } from '../../actions';
@@ -18,7 +19,7 @@ export class MainSearch extends React.Component {
   state = {
     userInput: '',
   }
-  
+
   makeSearch() {
     Keyboard.dismiss();
     this.props.dispatch(getCurrentConditions(this.state.userInput));
@@ -28,20 +29,15 @@ export class MainSearch extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.heading}>
-          <Text style={styles.weatherbossheading}>WeatherBoss</Text>
-          <Text style={styles.weatherbosssubheading}>Be your own weatherboss</Text>
+        <Head />
+        <View style={styles.inputContainer}>
+          <TextInput style={styles.input}
+            textAlign="center"
+            underlineColorAndroid='rgba(0,0,0,0)'
+            onChangeText={(input) => this.setState({ userInput: input })}
+            placeholder="Washington DC" />
         </View>
-        <View style={styles.inputcontainer}>
-          <TextInput style={styles.input} 
-          textAlign="center"
-          underlineColorAndroid='rgba(0,0,0,0)'
-          onChangeText={(input) => this.setState({userInput: input})} 
-          placeholder="Washington DC"/>
-
-          
-        </View>
-        <Button backgroundColor='#12CC94' onPress={() => {this.makeSearch()}} title='search' />
+        <Button backgroundColor='#12CC94' onPress={() => { this.makeSearch() }} title='search' />
       </View>
     );
   }
@@ -51,46 +47,31 @@ const styles = StyleSheet.create({
   container: {
 
   },
-  heading: {
+
+  inputContainer: {
     alignItems: 'center',
-    backgroundColor: '#6088BB',
-    marginBottom: 15,
-    padding: 50,
-  },
-  weatherbossheading: {
-    color: 'white',
-    fontSize: 30,
-  },
-  weatherbosssubheading: {
-    color: 'white',
-    fontSize: 10,
-  },
-  inputcontainer: {
-    alignItems: 'center',
+    marginTop: 20,
   },
   input: {
     backgroundColor: 'white',
-    borderColor: 'gray', 
+    borderColor: 'gray',
     borderWidth: 1,
     color: 'gray',
     height: 30,
     marginBottom: 10,
     width: '95%',
   },
-  searchbutton: {
-    backgroundColor:'#12CC94',
-  }
 });
 
-const mapStateToProps = function(state){
-    return {
-      currentData: state.currentData,
-      currentUser: state.currentUser,
-      forecastData: state.forecastData,
-      forecastCity: state.forecastCity,
-      forecastState: state.forecastState,
-      navigationState: state.tabBar
-    }
+const mapStateToProps = function (state) {
+  return {
+    currentData: state.currentData,
+    currentUser: state.currentUser,
+    forecastData: state.forecastData,
+    forecastCity: state.forecastCity,
+    forecastState: state.forecastState,
+    navigationState: state.tabBar
+  }
 };
 
 export default connect(mapStateToProps)(MainSearch);

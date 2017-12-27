@@ -49,8 +49,12 @@ export const getCurrentConditionError = message => ({
 
 
 export const createUser = (usernameInput, passwordInput) => dispatch => {
+    function _handleError(errorMessage) {
+        console.log(errorMessage);
+      }
+    
     dispatch(createUserRequest());
-    fetch('/api/users', {
+    fetch('https://localhost:3001/api/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -61,11 +65,25 @@ export const createUser = (usernameInput, passwordInput) => dispatch => {
           password: passwordInput,
         })
       })
+      .then(res => {
+        if(response.ok) {
+            return response.json();
+          } else {
+            _handleError(`Oops, something went wrong: ${response.status}, ${response.statusText}`);
+          }
+        }).then(function(data) {
+           if(data) {
+             console.log('success', data);
+           }
+        })
     //error handling
-
+    .catch(error => {
+         // ADD THIS THROW error
+          _handleError(`There has been a problem with your fetch operation: ${error.message}`)
+        });
     //front end rendering
 
-    console.log(formattedUserInput)
+
 };
 
 export const getWeather = (userInput) => dispatch => {

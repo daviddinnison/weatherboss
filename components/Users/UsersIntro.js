@@ -3,16 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { Button, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 // components
 import Head from '../Reusable/Head';
-
-
-//router
-// import {Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene} from 'react-native-router-flux';
-
-
 
 export class UsersIntro extends React.Component {
     testFunc() {

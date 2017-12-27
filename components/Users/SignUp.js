@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { Alert, Button, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 
 //actions
 import { createUser } from '../../actions';
@@ -24,25 +24,62 @@ export class SignUp extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text>SignUp for user</Text>
-                <View style={styles.inputcontainer}>
-                    <TextInput
+            <View style={styles.container}>
+                <Text style={styles.heading}>Become a WeatherBoss</Text>
+                <View style={styles.inputContainer}>
+                    <TextInput style={styles.textInput}
                         onChangeText={(input) => this.setState({ usernameInput: input })}
-                        placeholder="username" />
-                    <TextInput
+                        underlineColorAndroid={'transparent'}
+                        placeholderTextColor={'grey'}
+                        placeholder='username' />
+                    <TextInput style={styles.textInput}
                         onChangeText={(input) => this.setState({ passwordInput: input })}
-                        secureTextEntry={true} 
-                        placeholder="password" />
+                        underlineColorAndroid={'transparent'}
+                        secureTextEntry={true}
+                        placeholderTextColor={'grey'}
+                        placeholder='password' />
                 </View>
-                <Button backgroundColor='#12CC94' onPress={() => { this.submitData() }} title='submit' />
+                <TouchableHighlight style={styles.button} onPress={() => { this.submitData() }}>
+                    <Text style={styles.text}>Submit</Text>
+                </TouchableHighlight>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-
+    container: {
+        alignItems: 'center',
+        flex: 1,
+        marginTop: 20,
+    },
+    inputContainer: {
+        width: '90%',
+    },
+    heading: {
+        fontSize: 20,
+        marginBottom: 10,
+    },
+    textInput: {
+        backgroundColor: 'white',
+        fontSize: 17,
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#12CC94',
+        height: 40,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom: 10,
+        padding: 20,
+        width: '95%',
+    },
+    text: {
+        fontSize: 16,
+        color: 'white',
+    }
 });
 
 const mapStateToProps = function (state) {
