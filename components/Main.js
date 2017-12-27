@@ -22,12 +22,12 @@ export default class Main extends React.Component {
         return (
             <Router>
                 <Stack key="root">
+                    <Scene key="search" component={MainSearch} />
                     <Scene key="signup" component={SignUp} />
                     <Scene key="dashboard" component={Dashboard} />
 
                     <Scene key="signupsuccess" component={SignUpSuccess} />
                     <Scene key="usersintro" component={UsersIntro} />
-                    <Scene key="search" component={MainSearch} />
                     <Scene key="locations" component={Locations} />
                     <Scene key="results" component={SearchResults} />
                     <Scene key="error" component={ErrorPage} />
