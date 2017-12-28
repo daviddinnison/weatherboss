@@ -2,17 +2,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
 //react native
 import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 
-
+//redux
+import {Field, reduxForm, focus} from 'redux-form';
 
 //actions
 import { createUser, login } from '../../actions';
 
 
-export class SignUp extends React.Component {
+
+export class SignUpForm extends React.Component {
     state = {
         usernameInput: '',
         passwordInput: ''
@@ -31,7 +32,6 @@ export class SignUp extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.heading}>Become a WeatherBoss</Text>
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.textInput}
                         onChangeText={(input) => this.setState({ usernameInput: input })}
@@ -62,10 +62,6 @@ const styles = StyleSheet.create({
     inputContainer: {
         width: '90%',
     },
-    heading: {
-        fontSize: 20,
-        marginBottom: 10,
-    },
     textInput: {
         backgroundColor: 'white',
         fontSize: 17,
@@ -94,4 +90,4 @@ const mapStateToProps = function (state) {
     }
 };
 
-export default connect(mapStateToProps)(SignUp);
+export default connect(mapStateToProps)(SignUpForm);
