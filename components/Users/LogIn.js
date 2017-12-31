@@ -6,21 +6,17 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-// components
-import Head from '../Reusable/Head';
 
-export class UsersIntro extends React.Component {
+export class LogIn extends React.Component {
+    testFunc() {
+        console.log('something')
+    }
+
     render() {
         return (
             <View>
-                <Head />
                 <View style={styles.container}>
-                    <TouchableHighlight style={[styles.button, styles.signupButton]} onPress={() => { Actions.signup() }}>
-                        <Text style={styles.text}>Signup</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight style={[styles.button, styles.loginButton]} onPress={() => {  Actions.login() }}>
                         <Text style={styles.text}>Login</Text>
-                    </TouchableHighlight>
                 </View>
             </View>
         );
@@ -50,7 +46,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        color: 'white',
+        color: 'red',
     }
 });
 
@@ -60,4 +56,4 @@ const mapStateToProps = function (state) {
     }
 };
 
-export default connect(mapStateToProps)(UsersIntro);
+export default connect(mapStateToProps)(LogIn);
