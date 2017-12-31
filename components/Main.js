@@ -30,6 +30,7 @@ export default class Main extends React.Component {
                     <Scene key="dashboard" component={Dashboard} />
 
                     <Scene key="signupsuccess" component={SignUpSuccess} />
+                    <Scene key="mainsearch" component={MainSearch} />
                     <Scene key="locations" component={Locations} />
                     <Scene key="results" component={SearchResults} />
                     <Scene key="error" component={ErrorPage} />

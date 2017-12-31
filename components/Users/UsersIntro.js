@@ -21,6 +21,9 @@ export class UsersIntro extends React.Component {
                     <TouchableHighlight style={[styles.button, styles.loginButton]} onPress={() => {  Actions.login() }}>
                         <Text style={styles.text}>Login</Text>
                     </TouchableHighlight>
+                    <TouchableHighlight style={[styles.button, styles.searchButton]} onPress={() => {  Actions.mainsearch() }}>
+                        <Text style={styles.text}>Search</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
         );
@@ -44,6 +47,9 @@ const styles = StyleSheet.create({
     },
     loginButton: {
         backgroundColor: 'blue',
+    },
+    searchButton: {
+        backgroundColor: 'green',
     },
     signupButton: {
         backgroundColor: 'red',
