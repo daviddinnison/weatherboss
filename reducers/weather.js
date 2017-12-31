@@ -28,7 +28,7 @@ const initialState = {
     forecastData: {},
 };
 
-export const mainReducer = (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case 'CREATE_USER_REQUEST': {
             return Object.assign({}, state, {
