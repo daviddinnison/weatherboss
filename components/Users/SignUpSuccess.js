@@ -2,23 +2,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+
 //react native
 import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 
-//components
-import SignUpForm from './SignUpForm';
-
-
-export class SignUpPage extends React.Component {
-    // if (props.loggedIn) {
-    //     return <Redirect to="/dashboard" />;
-    // }
+export class SignUpSuccess extends React.Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.heading}>Become a WeatherBoss</Text>
-                <SignUpForm />
+                <Text style={styles.text}>You made a user</Text>
             </View>
         );
     }
@@ -30,16 +23,16 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 20,
     },
-    heading: {
-        fontSize: 20,
-        marginBottom: 10,
-    },
+
+    text: {
+        fontSize: 16,
+    }
 });
 
 const mapStateToProps = function (state) {
     return {
-        // loggedIn: state.auth.currentUser !== null
+        currentUser: state.currentUser,
     }
 };
 
-export default connect(mapStateToProps)(SignUpPage);
+export default connect(mapStateToProps)(SignUpSuccess);

@@ -12,7 +12,7 @@ const initialState = {
         icon_url: undefined,
     },
     currentUser: {
-        username: 'David',
+        name: 'David',
         locations: [
             {
                 id: 1,

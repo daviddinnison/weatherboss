@@ -38,7 +38,7 @@ export class Dashboard extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.heading}>Welcome, {this.props.currentUser.username}</Text>
+                <Text style={styles.heading}>Welcome, {this.props.currentUser.name}</Text>
                 <View>
                     {this.renderResults()}
                 </View>
