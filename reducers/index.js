@@ -12,7 +12,7 @@ const initialState = {
         icon_url: undefined,
     },
     currentUser: {
-        name: 'David',
+        username: 'David',
         locations: [
             {
                 id: 1,
@@ -29,10 +29,18 @@ const initialState = {
 };
 
 export const mainReducer = (state = initialState, action) => {
+//USER DATA
     switch (action.type) {
         case 'CREATE_USER_REQUEST': {
             return Object.assign({}, state, {
                 loading: true
+            });
+        }
+        case 'CREATE_USER_SUCCESS': {
+            console.log('ACTION.CURRENTUSER is this. ..', action.currentUser)
+            return Object.assign({}, state, {
+                currentUser: action.currentUser,
+                loading: false
             });
         }
         case 'CREATE_USER_ERROR': {
@@ -42,6 +50,8 @@ export const mainReducer = (state = initialState, action) => {
             });
         }
 
+
+//WEATHER INFO
         case 'GET_WEATHER_REQUEST': {
             return Object.assign({}, state, {
                 loading: true

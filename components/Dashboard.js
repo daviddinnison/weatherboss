@@ -36,9 +36,10 @@ export class Dashboard extends React.Component {
 
 
     render() {
+        console.log('DASHBOARD RENDER RESULTS PROPS', this.props)
         return (
             <View style={styles.container}>
-                <Text style={styles.heading}>Welcome, {this.props.currentUser.name}</Text>
+                <Text style={styles.heading}>Welcome, {this.props.currentUser.username}</Text>
                 <View>
                     {this.renderResults()}
                 </View>
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = function (state) {
     return {
-        currentUser: state.currentUser,
+        currentUser: state.currentUser.data,
     }
 };
 

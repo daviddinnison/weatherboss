@@ -8,6 +8,12 @@ export const createUserRequest = (username, password) => ({
     password
 })
 
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
+export const createUserSuccess = (currentUser) => ({
+    type: CREATE_USER_SUCCESS,
+    currentUser
+});
+
 export const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
 export const createUserError = message => ({
     type: CREATE_USER_ERROR,
@@ -22,10 +28,12 @@ export const createUser = (usernameInput, passwordInput) => dispatch => {
       })
       .then(function (response) {
         console.log(response, 'RESPONSE');
+        dispatch(createUserSuccess(response))
         Actions.dashboard();
       })
       .catch(function (error) {
         console.log(error);
+        dispatch(createUserError());
       });
 
     //front end rendering
