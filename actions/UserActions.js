@@ -38,7 +38,7 @@ export const createUser = (usernameInput, passwordInput) => dispatch => {
 };
 
 
-
+//LOGIN
 export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 export const loginUserRequest = (username, password) => ({
     type: LOGIN_USER_REQUEST,
@@ -63,4 +63,29 @@ export const loginUser = (usernameInput, passwordInput) => dispatch => {
     dispatch(loginUserRequest());
     dispatch(loginUserSuccess());
     Actions.dashboard();
+};
+
+
+//LOGOUT USER
+export const LOGOUT_USER_REQUEST = 'LOGOUT_USER_REQUEST';
+export const logoutUserRequest = () => ({
+    type: LOGOUT_USER_REQUEST,
+})
+
+export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
+export const logoutUserSuccess = () => ({
+    type: LOGOUT_USER_SUCCESS,
+});
+
+export const LOGOUT_USER_ERROR = 'LOGOUT_USER_ERROR';
+export const logoutUserError = message => ({
+    type: LOGOUT_USER_ERROR,
+    message
+});
+
+
+export const logoutUser = () => dispatch => {
+    dispatch(logoutUserRequest());
+    dispatch(logoutUserSuccess());
+    Actions.usersintro();
 };

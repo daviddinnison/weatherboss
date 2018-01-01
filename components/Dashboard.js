@@ -2,17 +2,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
 //react native
 import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+
+//actions
+import { logoutUser } from '../actions';
+
+
 
 export class Dashboard extends React.Component {
     addLocation() {
         console.log('this will be the addLocation action')
     }
 
-    addLocation() {
-        console.log('this will be the logout action')
+    logout() {
+        this.props.dispatch(logoutUser())
     }
 
 
@@ -50,7 +54,7 @@ export class Dashboard extends React.Component {
                 <TouchableHighlight style={styles.button} onPress={() => { this.addLocation() }}>
                     <Text style={styles.buttonText}>Add location</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.button} onPress={() => { this.logOut() }}>
+                <TouchableHighlight style={styles.button} onPress={() => { this.logout() }}>
                     <Text style={styles.buttonText}>Logout</Text>
                 </TouchableHighlight>
             </View>
