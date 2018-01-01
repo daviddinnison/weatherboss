@@ -11,6 +11,11 @@ export class Dashboard extends React.Component {
         console.log('this will be the addLocation action')
     }
 
+    addLocation() {
+        console.log('this will be the logout action')
+    }
+
+
     renderResults() {
         if (this.props.currentUser.locations.length > 0) {
             const locationData = this.props.currentUser.locations.map((item, index) =>
@@ -36,7 +41,6 @@ export class Dashboard extends React.Component {
 
 
     render() {
-        console.log('DASHBOARD RENDER RESULTS PROPS', this.props)
         return (
             <View style={styles.container}>
                 <Text style={styles.heading}>Welcome, {this.props.currentUser.username}</Text>
@@ -45,6 +49,9 @@ export class Dashboard extends React.Component {
                 </View>
                 <TouchableHighlight style={styles.button} onPress={() => { this.addLocation() }}>
                     <Text style={styles.buttonText}>Add location</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.button} onPress={() => { this.logOut() }}>
+                    <Text style={styles.buttonText}>Logout</Text>
                 </TouchableHighlight>
             </View>
         );
@@ -90,7 +97,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = function (state) {
     return {
-        currentUser: state.currentUser.data,
+        currentUser: state.currentUser,
     }
 };
 

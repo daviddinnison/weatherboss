@@ -26,6 +26,7 @@ const initialState = {
 
     },
     forecastData: {},
+    isLoggedIn: false,
 };
 
 export const mainReducer = (state = initialState, action) => {
@@ -39,7 +40,7 @@ export const mainReducer = (state = initialState, action) => {
         case 'CREATE_USER_SUCCESS': {
             console.log('ACTION.CURRENTUSER is this. ..', action.currentUser)
             return Object.assign({}, state, {
-                currentUser: action.currentUser,
+                currentUser: action.currentUser.data,
                 loading: false
             });
         }
@@ -49,7 +50,23 @@ export const mainReducer = (state = initialState, action) => {
                 error: action.message
             });
         }
-
+        case 'LOGIN_USER_REQUEST': {
+            return Object.assign({}, state, {
+                loading: true
+            });
+        }
+        case 'LOGIN_USER_SUCCESS': {
+            console.log('ACTION.CURRENTUSER is this. ..', action.currentUser)
+            return Object.assign({}, state, {
+                isLoggedIn: true
+            });
+        }
+        case 'LOGIN_USER_ERROR': {
+            return Object.assign({}, state, {
+                loading: false,
+                error: action.message
+            });
+        }
 
 //WEATHER INFO
         case 'GET_WEATHER_REQUEST': {

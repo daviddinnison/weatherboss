@@ -35,6 +35,32 @@ export const createUser = (usernameInput, passwordInput) => dispatch => {
         console.log(error);
         dispatch(createUserError());
       });
+};
 
-    //front end rendering
+
+
+export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
+export const loginUserRequest = (username, password) => ({
+    type: LOGIN_USER_REQUEST,
+    username,
+    password
+})
+
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const loginUserSuccess = () => ({
+    type: LOGIN_USER_SUCCESS,
+});
+
+export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
+export const loginUserError = message => ({
+    type: LOGIN_USER_ERROR,
+    message
+});
+
+
+
+export const loginUser = (usernameInput, passwordInput) => dispatch => {
+    dispatch(loginUserRequest());
+    dispatch(loginUserSuccess());
+    Actions.dashboard();
 };

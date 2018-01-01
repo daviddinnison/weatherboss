@@ -11,6 +11,9 @@ import Head from '../Reusable/Head';
 
 export class UsersIntro extends React.Component {
     render() {
+        if(this.props.isLoggedIn === true) {
+            Actions.dashboard();
+        }
         return (
             <View>
                 <Head />
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = function (state) {
     return {
         currentUser: state.currentUser,
+        isLoggedIn: state.isLoggedIn,
     }
 };
 

@@ -9,7 +9,7 @@ import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View 
 
 
 //actions
-import { createUser, login } from '../../actions';
+import { createUser } from '../../actions';
 
 
 export class SignUp extends React.Component {

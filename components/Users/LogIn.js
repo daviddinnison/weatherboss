@@ -3,21 +3,44 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+
+//actions
+import { loginUser } from '../../actions';
 
 
 export class LogIn extends React.Component {
-    testFunc() {
-        console.log('something')
+    state = {
+        usernameInput: '',
+        passwordInput: ''
+    }
+
+    submitLoginData() {
+        Keyboard.dismiss();
+        this.props.dispatch(loginUser(this.state.usernameInput, this.state.passwordInput))
     }
 
     render() {
         return (
-            <View>
-                <View style={styles.container}>
-                        <Text style={styles.text}>Login</Text>
+            <View style={styles.container}>
+                <Text style={styles.heading}>Login</Text>
+                <View style={styles.inputContainer}>
+                    <TextInput style={styles.textInput}
+                        onChangeText={(input) => this.setState({ usernameInput: input })}
+                        underlineColorAndroid={'transparent'}
+                        placeholderTextColor={'grey'}
+                        placeholder='username' />
+                    <TextInput style={styles.textInput}
+                        onChangeText={(input) => this.setState({ passwordInput: input })}
+                        underlineColorAndroid={'transparent'}
+                        secureTextEntry={true}
+                        placeholderTextColor={'grey'}
+                        placeholder='password' />
                 </View>
+                <TouchableHighlight style={styles.button} onPress={() => { this.submitLoginData() }}>
+                    <Text style={styles.buttonText}>Log in</Text>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -29,8 +52,22 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 20,
     },
+    inputContainer: {
+        width: '90%',
+    },
+    heading: {
+        fontSize: 20,
+        marginBottom: 10,
+    },
+    textInput: {
+        backgroundColor: 'white',
+        fontSize: 17,
+        marginBottom: 15,
+        textAlign: 'center',
+    },
     button: {
         alignItems: 'center',
+        backgroundColor: '#12CC94',
         height: 40,
         flexDirection: 'row',
         justifyContent: 'center',
@@ -38,15 +75,9 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '95%',
     },
-    loginButton: {
-        backgroundColor: 'blue',
-    },
-    signupButton: {
-        backgroundColor: 'red',
-    },
-    text: {
+    buttonText: {
         fontSize: 16,
-        color: 'red',
+        color: 'white',
     }
 });
 
