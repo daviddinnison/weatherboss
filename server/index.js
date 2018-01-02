@@ -2,9 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
-const usersRouter = require('./features/users');
-const authRouter = require('./features/auth');
+// const usersRouter = require('./features/users');
+// const authRouter = require('./features/auth');
+
+const { router: usersRouter } = require('./features/users');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./features/auth');
 
 const morgan = require('morgan');
 app.use(morgan('common'));
@@ -31,6 +35,9 @@ function runServer() {
         });
     });
 }
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
