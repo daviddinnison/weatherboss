@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 
-const usersRouter = require('./routes/usersRouter');
+const usersRouter = require('./features/users/usersRouter');
 
 const morgan = require('morgan');
 app.use(morgan('common'));
