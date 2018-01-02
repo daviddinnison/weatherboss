@@ -87,5 +87,5 @@ export const logoutUserError = message => ({
 export const logoutUser = () => dispatch => {
     dispatch(logoutUserRequest());
     dispatch(logoutUserSuccess());
-    Actions.usersintro();
+    Actions.launch();
 };

@@ -7,18 +7,16 @@ import { Router, Route, Schema, Animations, TabBar, Actions, Stack, Scene } from
 //components
 import Dashboard from './Dashboard';
 
-import UsersIntro from './Users/UsersIntro';
+import Launch from './Launch';
 import SignUp from './Users/SignUp';
 import LogIn from './Users/LogIn';
-import SignUpSuccess from './Users/SignUpSuccess';
 
 import Locations from './Results/Locations';
 import MainSearch from './Results/MainSearch';
 import SearchResults from './Results/SearchResults';
-import ErrorPage from './ErrorPage';
 
 
-export default class Main extends React.Component {
+export default class AppGateway extends React.Component {
     render() {
        
 
@@ -26,17 +24,14 @@ export default class Main extends React.Component {
         return (
             <Router>
                 <Stack key="root">
-                    <Scene key="usersintro" component={UsersIntro} />
+                    <Scene key="launch" component={Launch} />
                     <Scene key="login" component={LogIn} />
                     <Scene key="search" component={MainSearch} />
                     <Scene key="signup" component={SignUp} />
                     <Scene key="dashboard" component={Dashboard} />
-
-                    <Scene key="signupsuccess" component={SignUpSuccess} />
                     <Scene key="mainsearch" component={MainSearch} />
                     <Scene key="locations" component={Locations} />
                     <Scene key="results" component={SearchResults} />
-                    <Scene key="error" component={ErrorPage} />
                 </Stack>
             </Router>
         );

@@ -7,9 +7,9 @@ import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 // components
-import Head from '../Reusable/Head';
+import Head from './Reusable/Head';
 
-export class UsersIntro extends React.Component {
+export class Launch extends React.Component {
     render() {
         if(this.props.isLoggedIn === true) {
             Actions.dashboard();
@@ -70,4 +70,4 @@ const mapStateToProps = function (state) {
     }
 };
 
-export default connect(mapStateToProps)(UsersIntro);
+export default connect(mapStateToProps)(Launch);
