@@ -21,7 +21,7 @@ export class Launch extends React.Component {
                     <TouchableHighlight style={[styles.button, styles.signupButton]} onPress={() => { Actions.signup() }}>
                         <Text style={styles.text}>Signup</Text>
                     </TouchableHighlight>
-                    <TouchableHighlight style={[styles.button, styles.loginButton]} onPress={() => {  Actions.login() }}>
+                    <TouchableHighlight style={[styles.button, styles.loginButton]} onPress={() => {  Actions.loginpage() }}>
                         <Text style={styles.text}>Login</Text>
                     </TouchableHighlight>
                     <TouchableHighlight style={[styles.button, styles.searchButton]} onPress={() => {  Actions.mainsearch() }}>

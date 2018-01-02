@@ -9,7 +9,7 @@ import Dashboard from './Dashboard';
 
 import Launch from './Launch';
 import SignUp from './Users/SignUp';
-import LogIn from './Users/LogIn';
+import LogInPage from './Users/LogInPage';
 
 import Locations from './Results/Locations';
 import MainSearch from './Results/MainSearch';
@@ -25,7 +25,7 @@ export default class AppGateway extends React.Component {
             <Router>
                 <Stack key="root">
                     <Scene key="launch" component={Launch} />
-                    <Scene key="login" component={LogIn} />
+                    <Scene key="loginpage" component={LogInPage} />
                     <Scene key="search" component={MainSearch} />
                     <Scene key="signup" component={SignUp} />
                     <Scene key="dashboard" component={Dashboard} />

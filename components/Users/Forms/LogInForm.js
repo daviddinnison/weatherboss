@@ -7,10 +7,9 @@ import { Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 
 import { Actions } from 'react-native-router-flux';
 
 //actions
-import { loginUser } from '../../actions';
+import { loginUser } from '../../../actions';
 
-
-export class LogIn extends React.Component {
+export class LogInForm extends React.Component {
     state = {
         usernameInput: '',
         passwordInput: ''
@@ -24,7 +23,6 @@ export class LogIn extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.heading}>Login</Text>
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.textInput}
                         onChangeText={(input) => this.setState({ usernameInput: input })}
@@ -49,18 +47,15 @@ export class LogIn extends React.Component {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        flex: 1,
         marginTop: 20,
+        width: '100%',
     },
     inputContainer: {
-        width: '90%',
-    },
-    heading: {
-        fontSize: 20,
-        marginBottom: 10,
+        width: '100%',
     },
     textInput: {
         backgroundColor: 'white',
+        width: '100%',
         fontSize: 17,
         marginBottom: 15,
         textAlign: 'center',
@@ -69,7 +64,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#12CC94',
         height: 40,
-        flexDirection: 'row',
         justifyContent: 'center',
         marginBottom: 10,
         padding: 20,
@@ -87,4 +81,4 @@ const mapStateToProps = function (state) {
     }
 };
 
-export default connect(mapStateToProps)(LogIn);
+export default connect(mapStateToProps)(LogInForm);
