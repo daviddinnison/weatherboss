@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 
-const usersRouter = require('./features/users/usersRouter');
+const usersRouter = require('./features/users');
+const authRouter = require('./features/auth');
 
 const morgan = require('morgan');
 app.use(morgan('common'));
@@ -32,6 +33,8 @@ function runServer() {
 }
 
 app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter);
+
 
 function closeServer() {
     return new Promise((resolve, reject) => {
