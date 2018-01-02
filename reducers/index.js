@@ -56,7 +56,7 @@ export const mainReducer = (state = initialState, action) => {
         }
         case 'LOGIN_USER_SUCCESS': {
             return Object.assign({}, state, {
-                isLoggedIn: true
+                isLoggedIn: true,
             });
         }
         case 'LOGIN_USER_ERROR': {
