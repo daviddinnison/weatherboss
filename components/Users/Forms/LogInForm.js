@@ -2,6 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+//redux
+import {Field, reduxForm, focus} from 'redux-form';
+
 //react native
 import { Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';

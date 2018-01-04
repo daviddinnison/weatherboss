@@ -14,7 +14,6 @@ export class Dashboard extends React.Component {
     addLocation() {
         console.log('this will be the addLocation action')
     }
-
     logout() {
         this.props.dispatch(logoutUser())
     }
@@ -45,9 +44,10 @@ export class Dashboard extends React.Component {
 
 
     render() {
+        console.log('this.props is.....', this.props)
         return (
             <View style={styles.container}>
-                <Text style={styles.heading}>Welcome, {this.props.currentUser.username}</Text>
+                {/* <Text style={styles.heading}>Welcome, {this.props.currentUser.username}</Text> */}
                 <View>
                     {this.renderResults()}
                 </View>

@@ -29,7 +29,7 @@ const initialState = {
     isLoggedIn: false,
 };
 
-export const mainReducer = (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
 //USER DATA
     switch (action.type) {
         case 'CREATE_USER_REQUEST': {
