@@ -47,7 +47,7 @@ export class Dashboard extends React.Component {
         console.log('this.props is.....', this.props)
         return (
             <View style={styles.container}>
-                {/* <Text style={styles.heading}>Welcome, {this.props.currentUser.username}</Text> */}
+                <Text style={styles.heading}>Welcome, {this.props.currentUser.username}</Text>
                 <View>
                     {this.renderResults()}
                 </View>

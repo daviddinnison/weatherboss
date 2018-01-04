@@ -27,6 +27,7 @@ export class LogInForm extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.inputContainer}>
+                
                     <TextInput style={styles.textInput}
                         onChangeText={(input) => this.setState({ usernameInput: input })}
                         underlineColorAndroid={'transparent'}
