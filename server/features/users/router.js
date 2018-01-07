@@ -158,31 +158,29 @@ router.post('/', (req, res) => {
         });
 });
 
-router.post('/location', jsonParser, (req, res) => {
-    console.log(req.body, 'REQ BODY')
-    const requiredFields = ['id', 'location'];
-    for (let i = 0; i < requiredFields.length; i++) {
-        const field = requiredFields[i];
-        if (!(field in req.body)) {
-            const message = `Missing \`${field}\` in request body`
-            console.error(message);
-            return res.status(400).send(message);
-        }
-    }
+router.post('/:id', jsonParser, (req, res) => {
+    console.log(req.params.id, 'PARAMS')
+    console.log(req.body.location, 'REQ BODY')
+    //find user
     Users
-        .find({ id: req.body.id })
-        .exec()
-        .then(users => {
-            res.json({
-                users: users.map(
-                    (users) => users.serialize())
-            });
+        .findById(req.params.id)
+        .then(user => {
+            if (!user) { return res.status(404).end(); }
+            // return res.status(200).json(user);
+            return res.json(user);
         })
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({ error: 'something went terribly wrong' });
-        });
-
+        .then(user => {
+            console('you made it here', user)
+            Users.update(
+                { id: req.params.id },
+                { $push: { location: [req.body.location] } }
+            );
+        })
+        .then(user => {
+            return res.status(201).json(user.serialize());
+        })
+        .catch(err => next(err));
+    //push new location into locations array
 });
 
 module.exports = { router };
