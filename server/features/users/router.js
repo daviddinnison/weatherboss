@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const cors = require('cors')
-const {CLIENT_ORIGIN} = require('../../config');
+const { CLIENT_ORIGIN } = require('../../config');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
@@ -21,6 +21,18 @@ app.use(
 );
 
 const { Users } = require('./models');
+
+router.get('/:id', jsonParser, (req, res) => {
+    console.log(req.params.id)
+    Users
+        .findById(req.params.id)
+        .then(user => {
+            if (!user) { return res.status(404).end(); }
+            return res.status(200).json(user);
+        })
+        .catch(err => next(err));
+});
+
 
 router.get('/', (req, res) => {
     Users
@@ -116,34 +128,61 @@ router.post('/', (req, res) => {
 
 
     let { username, password } = req.body;
-    return Users.find({username})
-    .count()
-    //checks that username is not taken
-    .then(count => {
-      if (count > 0) {
-        return Promise.reject({
-          code: 422,
-          reason: 'ValidationError',
-          message: 'Username already taken',
-          location: 'username'
+    return Users.find({ username })
+        .count()
+        //checks that username is not taken
+        .then(count => {
+            if (count > 0) {
+                return Promise.reject({
+                    code: 422,
+                    reason: 'ValidationError',
+                    message: 'Username already taken',
+                    location: 'username'
+                });
+            }
+        })
+        .then(user => {
+            return Users.create({
+                username,
+                password: bcrypt.hashSync(req.body.password, 10)
+            });
+        })
+        .then(user => {
+            return res.status(201).json(user.serialize());
+        })
+        .catch(err => {
+            if (err.reason === 'ValidationError') {
+                return res.status(err.code).json(err);
+            }
+            res.status(500).json({ code: 500, message: 'Internal server error' });
         });
-      }
-    })
-    .then(user => {
-      return Users.create({
-        username,
-        password: bcrypt.hashSync(req.body.password, 10)
-      });
-    })
-    .then(user => {
-      return res.status(201).json(user.serialize());
-    })
-    .catch(err => {
-      if (err.reason === 'ValidationError') {
-        return res.status(err.code).json(err);
-      }
-      res.status(500).json({code: 500, message: 'Internal server error'});
-    });
 });
 
-module.exports = {router};
+router.post('/location', jsonParser, (req, res) => {
+    console.log(req.body, 'REQ BODY')
+    const requiredFields = ['id', 'location'];
+    for (let i = 0; i < requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+            const message = `Missing \`${field}\` in request body`
+            console.error(message);
+            return res.status(400).send(message);
+        }
+    }
+    Users
+        .find({ id: req.body.id })
+        .exec()
+        .then(users => {
+            res.json({
+                users: users.map(
+                    (users) => users.serialize())
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: 'something went terribly wrong' });
+        });
+
+});
+
+module.exports = { router };
