@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //redux
-import {Field, reduxForm, focus} from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 
 //react native
 import { Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
@@ -11,6 +11,7 @@ import { Actions } from 'react-native-router-flux';
 
 //actions
 import { loginUser } from '../../../actions';
+import LogInTextInput from './LogInTextInput';
 
 export class LogInForm extends React.Component {
     state = {
@@ -27,8 +28,12 @@ export class LogInForm extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.inputContainer}>
-                
-                    <TextInput style={styles.textInput}
+                    <Field
+                        name={'email'}
+                        component={LogInTextInput}
+                    />
+
+                    {/* <TextInput style={styles.textInput}
                         onChangeText={(input) => this.setState({ usernameInput: input })}
                         underlineColorAndroid={'transparent'}
                         placeholderTextColor={'grey'}
@@ -38,7 +43,7 @@ export class LogInForm extends React.Component {
                         underlineColorAndroid={'transparent'}
                         secureTextEntry={true}
                         placeholderTextColor={'grey'}
-                        placeholder='password' />
+                        placeholder='password' /> */}
                 </View>
                 <TouchableHighlight style={styles.button} onPress={() => { this.submitLoginData() }}>
                     <Text style={styles.buttonText}>Log in</Text>

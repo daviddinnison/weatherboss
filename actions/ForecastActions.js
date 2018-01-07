@@ -46,7 +46,7 @@ export const getWeather = (userInput) => dispatch => {
             return res.json();
         })
         .then(forecastData => {
-
+            console.log('FORECAST DATA....', forecastData)
             dispatch(getWeatherSuccess(forecastData));
             Actions.results();
         })

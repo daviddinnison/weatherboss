@@ -6,11 +6,21 @@ import { connect } from 'react-redux';
 import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 
 //actions
-import { logoutUser } from '../actions';
+import { logoutUser, getCurrentConditions, getWeather } from '../actions';
 
 
 
 export class Dashboard extends React.Component {
+    state = {
+        userSelection: '',
+      }
+    
+    makeSearch(selection) {
+        console.log('SELECTION....', selection)
+        this.props.dispatch(getCurrentConditions(selection));
+        this.props.dispatch(getWeather(selection));
+    }
+
     addLocation() {
         console.log('this will be the addLocation action')
     }
@@ -23,7 +33,9 @@ export class Dashboard extends React.Component {
         if (this.props.currentUser.locations.length > 0) {
             const locationData = this.props.currentUser.locations.map((item, index) =>
                 <View key={item.id} style={styles.locationItem}>
-                    <Text>{item.name}</Text>
+                    <TouchableHighlight onPress={() => {  this.makeSearch(item.name) }}>
+                        <Text>{item.name}</Text>
+                    </TouchableHighlight>
                 </View>
             );
             return (
@@ -72,7 +84,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 20,
     },
-    locationContainer: { 
+    locationContainer: {
         flex: 1,
     },
     locationItem: {

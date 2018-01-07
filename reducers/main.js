@@ -30,7 +30,7 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-//USER DATA
+    //USER DATA
     switch (action.type) {
         case 'CREATE_USER_REQUEST': {
             return Object.assign({}, state, {
@@ -38,8 +38,9 @@ export default function reducer(state = initialState, action) {
             });
         }
         case 'CREATE_USER_SUCCESS': {
+            console.log(action.currentUser, 'ACTION CURRENTUSER IN REDUCER')
             return Object.assign({}, state, {
-                currentUser: action.currentUser.data,
+                currentUser: action.currentUser,
                 loading: false
             });
         }
@@ -82,7 +83,7 @@ export default function reducer(state = initialState, action) {
             });
         }
 
-//WEATHER INFO
+        //WEATHER INFO
         case 'GET_WEATHER_REQUEST': {
             return Object.assign({}, state, {
                 loading: true
@@ -90,6 +91,7 @@ export default function reducer(state = initialState, action) {
         }
 
         case 'GET_WEATHER_SUCCESS': {
+            console.log('WEATHER SUCCESS REDUCER', action.forecastData)
             return Object.assign({}, state, {
                 forecastData: action.forecastData,
                 loading: false
@@ -122,8 +124,6 @@ export default function reducer(state = initialState, action) {
                 error: action.message
             });
         }
-
-
-        default: return state;
     }
+    return state;
 };

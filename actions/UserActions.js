@@ -31,6 +31,7 @@ export const createUser = (usernameInput, passwordInput) => dispatch => {
     })
         .then(function (response) {
             const STORAGE_KEY = 'id_token';
+            console.log(response, 'CREATE USER RESPONSE')
             dispatch(createUserSuccess(response))
             Actions.dashboard();
         })
