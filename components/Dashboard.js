@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 //react native
 import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
-
+import { Actions } from 'react-native-router-flux';
 //actions
 import { logoutUser, getCurrentConditions, getWeather } from '../actions';
 
@@ -21,13 +21,9 @@ export class Dashboard extends React.Component {
         this.props.dispatch(getWeather(selection));
     }
 
-    addLocation() {
-        console.log('this will be the addLocation action')
-    }
     logout() {
         this.props.dispatch(logoutUser())
     }
-
 
     renderResults() {
         if (this.props.currentUser.locations.length > 0) {
@@ -63,7 +59,7 @@ export class Dashboard extends React.Component {
                 <View>
                     {this.renderResults()}
                 </View>
-                <TouchableHighlight style={styles.button} onPress={() => { this.addLocation() }}>
+                <TouchableHighlight style={styles.button} onPress={() => { Actions.addlocation() }}>
                     <Text style={styles.buttonText}>Add location</Text>
                 </TouchableHighlight>
                 <TouchableHighlight style={styles.button} onPress={() => { this.logout() }}>

@@ -133,3 +133,7 @@ export const logoutUser = () => dispatch => {
     dispatch(logoutUserSuccess());
     Actions.launch();
 };
+
+export const addLocation = (userInput) => dispatch => {
+    console.log(userInput, 'THIS IS THE ADDLOCATION INPUT')
+};
