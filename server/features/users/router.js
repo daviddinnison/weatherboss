@@ -158,28 +158,17 @@ router.post('/', (req, res) => {
         });
 });
 
-router.post('/:id', jsonParser, (req, res) => {
-    console.log(req.params.id, 'PARAMS')
-    console.log(req.body.location, 'REQ BODY')
+router.post('/locations/:id', jsonParser, (req, res) => {
     //find user
     Users
-        .findById(req.params.id)
-        .then(user => {
-            if (!user) { return res.status(404).end(); }
-            // return res.status(200).json(user);
-            return res.json(user);
+        .findByIdAndUpdate(req.params.id, { $set: { locations: req.body.newLocation } }, { new: true }, function (err, tank) {
+            if (err) { 
+                console.err(err) 
+            } else {
+                console.log(tank, '......tank')
+                res.send(tank);
+            }
         })
-        .then(user => {
-            console('you made it here', user)
-            Users.update(
-                { id: req.params.id },
-                { $push: { location: [req.body.location] } }
-            );
-        })
-        .then(user => {
-            return res.status(201).json(user.serialize());
-        })
-        .catch(err => next(err));
     //push new location into locations array
 });
 
