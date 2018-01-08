@@ -22,6 +22,7 @@ app.use(
 
 const { Users } = require('./models');
 
+// get single user
 router.get('/:id', jsonParser, (req, res) => {
     console.log(req.params.id)
     Users
@@ -33,7 +34,7 @@ router.get('/:id', jsonParser, (req, res) => {
         .catch(err => next(err));
 });
 
-
+// get all users
 router.get('/', (req, res) => {
     Users
         .find()
@@ -51,6 +52,7 @@ router.get('/', (req, res) => {
 });
 
 
+// create new user
 router.post('/', (req, res) => {
     //checks that user and password exists
     const requiredFields = ['username', 'password'];
@@ -158,18 +160,16 @@ router.post('/', (req, res) => {
         });
 });
 
+// add loaction
 router.post('/locations/:id', jsonParser, (req, res) => {
-    //find user
     Users
-        .findByIdAndUpdate(req.params.id, { $set: { locations: req.body.newLocation } }, { new: true }, function (err, tank) {
-            if (err) { 
-                console.err(err) 
+        .findByIdAndUpdate(req.params.id, { $push: { locations: req.body.newLocation } }, { new: true }, function (err, newData) {
+            if (err) {
+                console.err(err)
             } else {
-                console.log(tank, '......tank')
-                res.send(tank);
+                res.send(newData);
             }
         })
-    //push new location into locations array
 });
 
 module.exports = { router };
